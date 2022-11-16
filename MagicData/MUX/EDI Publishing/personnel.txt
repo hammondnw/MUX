@@ -1,0 +1,14 @@
+givenName	middleInitial	surName	organizationName	electronicMailAddress	userId	role	projectTitle	fundingAgency	fundingNumber
+Nicholas	W.	Hammond	Virginia Tech	hammondnw@vt.edu	0000-0003-2975-8280	creator
+Nicholas	W.	Hammond	Virginia Tech	hammondnw@vt.edu	0000-0003-2975-8280	PI		Geological Society of America
+François	 	Birgand	NC State	birgand@ncsu.edu	0000-0002-5366-1166	creator
+Cayelan	C.	Carey	Virginia Tech	Cayelan@vt.edu	0000-0001-8835-4476	creator
+Cayelan	C.	Carey	Virginia Tech	Cayelan@vt.edu	0000-0001-8835-4476	PI		Western Virginia Water Authority	
+Cayelan	C.	Carey	Virginia Tech	Cayelan@vt.edu	0000-0001-8835-4476	PI	SCC-IRG Track 2: Resilient Water Systems: Integrating Environmental Sensor Networks and Real-Time Forecasting to Adaptively Manage Drinking Water Quality and Build Social Trust	National Science Foundation	1737424
+Cayelan	C.	Carey	Virginia Tech	Cayelan@vt.edu	0000-0001-8835-4476	PI	Collaborative Research: Consequences of changing oxygen availability for carbon cycling in freshwater ecosystems	National Science Foundation	1753639
+Cayelan	C.	Carey	Virginia Tech	Cayelan@vt.edu	0000-0001-8835-4476	PI	Collaborative Research: CIBR: Cyberinfrastructure Enabling End-to-End Workflows for Aquatic Ecosystem Forecasting	National Science Foundation	1933016
+Adrienne	 	Breef-Pilz	Virginia Tech	abreefpilz@vt.edu	0000-0002-6759-0063	creator
+Bethany	 	Bookout	Virginia Tech	youthoutreach@newriverlandtrust.org	0000-0001-8394-926X	creator
+Madeline	E.	Schreiber	Virginia Tech	mschreib@vt.edu	0000-0002-1858-7730	creator
+Madeline	E.	Schreiber	Virginia Tech	mschreib@vt.edu	0000-0002-1858-7730	contact
+Jeffrey	 	Parks	Virginia Tech	jparks@vt.edu	0000-0002-1269-6987	analytical chemist

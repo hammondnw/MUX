@@ -1,0 +1,152 @@
+24MAR20
+Mux deployed at FCR using surface water rinse. Noticed skips in program and measurement recording but not anything that should effect depths data.
+
+27MAR20
+Sensor field day troubleshooting mux. Autoreset did not work on 26MAR20. Skipping recording measurements for Valve 9 aka acid. Pumping slow or not working at all at certain depths. Flushed peristaltic tubing out in mux which seemed to work enough to leave the mux on.
+
+30MAR20
+Manual pumping tests. Slow pumping again tried flushing tubing. Still pumping enough to record data so mux left on.
+
+1APR20
+Mux pump is officially dead.
+
+4APR20
+Pump found completely dead but did not have supplies to troubleshoot reason. Mux left off.
+
+7APR20
+1.6m scan from mux deployed on chain in reservoir on spare con::nect. Pump checked again and was still dead.
+
+10APR20
+Deployed new scan at 4.5m in the reservoir connected and logging data through the mux. Downloaded 1.6m scan. Both sondes are on chain. Presumed cleaning of both scans.
+
+13APR20
+Sensor downloads of scan at 1.6m and mux scan at 4.5m. Mux logs appear normal and to have reset properly everyday. Water level very high. 
+
+20APR2020
+Sensor downloads of scan at 1.6m and mux scan at 4.5m. Pulled scans out of water to clean 12:40-12:45 EDT. No major fouling detected on lenses though cleaning cloth looked slightly silty after cleaning outside.
+
+24APR20
+Mux pump arrived. Deployed mux and started at 14:15 EDT. Data downloaded from scans. 4.5m scan was moved up to mux.
+
+25APR20
+Strange manual pumping noticed in pump log. Did not autoreset properly.
+
+27APR20
+Data downloaded from 1.6m scan and mux. Tried resetting scan attached to mux to help with autoreset and line up time of autoreset to occur when mux was not busy.
+
+1MAY20
+Data downloaded.
+
+4MAY20
+Data downloaded. Mux cuvette cleaned.
+
+11MAY20
+Data downloaded. 1.6m scan cleaned.
+
+14MAY20
+Data downloaded.
+
+15MAY20
+Steps 2 program deployed on mux. Stopped skipping measurements and autorest worked as expected. Program resulted in the mux only measuring to 17:00 after autoresets due to previously unknown pump number limits.
+
+18MAY20
+Data downloaded. No notes on cleaning scan on that field day but it was likely. Mux did not autoreset on 19MAY20.
+
+25MAY20
+Data download. 1.6m scan cleaned at 10:52. Steps 1 program put back on mux. Autoreset working.
+
+08JUN20
+Data downloaded. 1.6m scan cleaned at 13:30. Mux cuvette cleaned at 11:50.
+
+12JUN20
+Data downloaded.
+
+22JUN20
+Data downloaded. 1.6m scan cleaned at 10:18.
+
+25JUN20
+Mux cuvette cleaned at 12:00.
+
+29JUN20
+Data downloaded. 1.6m scan unhooked and floating when arrived. 1.6m scan cleaned 13:23-13:45.
+
+06JUL20
+Data downloaded. 1.6m scan cleaned at 12:48. Mux cuvette cleaned at 12:48.
+
+13JUL20
+Data downloaded. 1.6m scan cleaned at 11:24.
+
+20JUL20
+Data downloaded. 1.6m scan cleaned at 11:50.
+
+27JUL20
+Data downloaded. 1.6m scan cleaned at 12:35.
+
+31JUL20
+Mux cuvetter cleaned at 12:00.
+
+03AUG20
+Data downloaded. 1.6m scan cleaned at 12:54.
+
+07AUG20
+Mux cuvette cleaned at 10:37-10:57.
+
+10AUG20
+Data downloaded. 1.6m scan cleaned at 13:21-13:24EDT.
+
+17AUG20
+Data downloaded. 1.6m scan cleaned at 15:00-15:03EDT. Mux cleaned at 14:49-15:11EDT.
+
+24AUG20
+Data downloaded. 1.6m scan cleaned at 11:59-12:02EDT.
+
+02SEP20
+Data downloaded. 1.6m scan cleaned at 12:35-12:39EDT. Mux pulled for cleaning.
+
+09SEP20
+Attempted to put Mux back out but ran into power issues. Asking Francois about it. 
+
+11SEP20
+Data downloaded. 1.6m scan cleaned at 10:42-10:52EDT.
+
+15SEP20
+Data downloaded. 1.6m scan cleaned at 10:44-10:48EDT.
+
+19SEP20
+Data downloaded. 1.6m scan cleaned at 13:51-14:01EDT. 
+
+30SEP20
+Data downloaded. 1.6m scan cleaned at 10:52-10:57EDT.
+
+06OCT20
+Data downloaded. 1.6m scan cleaned at 14:44-14:46EDT with DI not ethanol. 
+
+14OCT20
+Data downloaded. 1.6m scan cleaned at 13:03-13:05EDT. Chain replaced with new rope 13:28-14:18EDT.
+
+19OCT20
+Data donwloaded. 1.6m scan cleaned at 13:12-13:17EDT. Replaced cuvette.
+
+26OCT20
+Data downloaded. 1.6m scan cleaned at 10:00-10:10EDT. Replaced cuvette 10:40EDT.
+
+28OCT20
+Data downloaded. Replaced cuvette 9:43EDT.
+
+30OCT20
+Data downloaded. Replaced cuvette.
+
+02NOV20
+Data downloaded. 1.6m scan cleaned at 10:21-10:29EST. Replaced cuvette 9:40EST.
+
+04NOV20
+Data downloaded. Replaced cuvette.
+
+09NOV20 
+Data downloaded. 1.6m scan cleaned at 10:25-10:35EST. 
+
+24NOV20
+1.6m scan cleaned at 11:34-11:37EST.
+
+02DEC20
+Data downloaded. 1.6m scan cleaned at 12:23-12:27EST.

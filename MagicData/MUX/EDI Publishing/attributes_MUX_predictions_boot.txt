@@ -1,0 +1,16 @@
+attributeName	attributeDefinition	class	unit	dateTimeFormatString	missingValueCode	missingValueCodeExplanation
+DateTime	Date and time of predicted concentration. All data were collected in Eastern Daylight Savings Time (GMT+4)	Date		MM/DD/YYYY HH:MM	NA	value is missing	
+Depth_m	Depth below surface corresponding to predicted concentration	numeric	meter		NA	value is missing
+TFe_mgL	 predicted total iron concentration	numeric	milligramsPerLiter		NA	value is missing
+TMn_mgL	 predicted total manganese concentration	numeric	milligramsPerLiter		NA	value is missing
+SFe_mgL	 predicted soluble iron concentration	numeric	milligramsPerLiter		NA	value is missing
+SMn_mgL	 predicted soluble manganese concentration	numeric	milligramsPerLiter		NA	value is missing
+uncerTFe_max	Upper bound to 90% predictive interval for total iron concentration	numeric	milligramsPerLiter		NA	value is missing
+uncerTFe_min	Lower bound to 90% predictive interval for total iron concentration	numeric	milligramsPerLiter		NA	value is missing
+uncerTMn_max	Upper bound to 90% predictive interval for total manganese concentration	numeric	milligramsPerLiter		NA	value is missing
+uncerTMn_min	Lower bound to 90% predictive interval for total manganese concentration	numeric	milligramsPerLiter		NA	value is missing
+uncerSFe_max	Upper bound to 90% predictive interval for soluble iron concentration	numeric	milligramsPerLiter		NA	value is missing
+uncerSFe_min	Lower bound to 90% predictive interval for soluble iron concentration	numeric	milligramsPerLiter		NA	value is missing
+uncerSMn_max	Upper bound to 90% predictive interval for soluble manganese concentration	numeric	milligramsPerLiter		NA	value is missing
+uncerSMn_min	Lower bound to 90% predictive interval for soluble manganese concentration	numeric	milligramsPerLiter		NA	value is missing
+

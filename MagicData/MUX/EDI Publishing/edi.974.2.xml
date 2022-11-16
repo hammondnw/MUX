@@ -1,0 +1,750 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eml:eml xmlns:eml="https://eml.ecoinformatics.org/eml-2.2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stmml="http://www.xml-cml.org/schema/stmml-1.2" packageId="edi.974.2" xsi:schemaLocation="https://eml.ecoinformatics.org/eml-2.2.0/eml.xsd https://eml.ecoinformatics.org/eml-2.2.0/eml.xsd" system="edi">
+  <access authSystem="https://pasta.edirepository.org/authentication" order="allowFirst" scope="document">
+    <allow>
+      <principal>uid=mschreib,o=EDI,dc=edirepository,dc=org</principal>
+      <permission>all</permission>
+    </allow>
+    <allow>
+      <principal>public</principal>
+      <permission>read</permission>
+    </allow>
+  </access>
+  <dataset>
+    <title>Time series of in situ Uv-Vis absorbance spectra and high-frequency predictions of total and soluble Fe and Mn concentrations measured at multiple depths in Falling Creek Reservoir (Vinton, VA, USA) in 2020 and 2021</title>
+    <creator>
+      <individualName>
+        <givenName>Nicholas</givenName>
+        <givenName>W.</givenName>
+        <surName>Hammond</surName>
+      </individualName>
+      <organizationName>Virginia Tech</organizationName>
+      <electronicMailAddress>hammondnw@vt.edu</electronicMailAddress>
+      <userId directory="https://orcid.org">https://orcid.org/0000-0003-2975-8280</userId>
+    </creator>
+    <creator>
+      <individualName>
+        <givenName>François</givenName>
+        <surName>Birgand</surName>
+      </individualName>
+      <organizationName>NC State</organizationName>
+      <electronicMailAddress>birgand@ncsu.edu</electronicMailAddress>
+      <userId directory="https://orcid.org">https://orcid.org/0000-0002-5366-1166</userId>
+    </creator>
+    <creator>
+      <individualName>
+        <givenName>Cayelan</givenName>
+        <givenName>C.</givenName>
+        <surName>Carey</surName>
+      </individualName>
+      <organizationName>Virginia Tech</organizationName>
+      <electronicMailAddress>Cayelan@vt.edu</electronicMailAddress>
+      <userId directory="https://orcid.org">https://orcid.org/0000-0001-8835-4476</userId>
+    </creator>
+    <creator>
+      <individualName>
+        <givenName>Adrienne</givenName>
+        <surName>Breef-Pilz</surName>
+      </individualName>
+      <organizationName>Virginia Tech</organizationName>
+      <electronicMailAddress>abreefpilz@vt.edu</electronicMailAddress>
+      <userId directory="https://orcid.org">https://orcid.org/0000-0002-6759-0063</userId>
+    </creator>
+    <creator>
+      <individualName>
+        <givenName>Bethany</givenName>
+        <surName>Bookout</surName>
+      </individualName>
+      <organizationName>Virginia Tech</organizationName>
+      <electronicMailAddress>youthoutreach@newriverlandtrust.org</electronicMailAddress>
+      <userId directory="https://orcid.org">https://orcid.org/0000-0001-8394-926X</userId>
+    </creator>
+    <creator>
+      <individualName>
+        <givenName>Madeline</givenName>
+        <givenName>E.</givenName>
+        <surName>Schreiber</surName>
+      </individualName>
+      <organizationName>Virginia Tech</organizationName>
+      <electronicMailAddress>mschreib@vt.edu</electronicMailAddress>
+      <userId directory="https://orcid.org">https://orcid.org/0000-0002-1858-7730</userId>
+    </creator>
+    <associatedParty>
+      <individualName>
+        <givenName>Jeffrey</givenName>
+        <surName>Parks</surName>
+      </individualName>
+      <organizationName>Virginia Tech</organizationName>
+      <electronicMailAddress>jparks@vt.edu</electronicMailAddress>
+      <userId directory="https://orcid.org">https://orcid.org/0000-0002-1269-6987</userId>
+      <role>analytical chemist</role>
+    </associatedParty>
+    <pubDate>2022-11-14</pubDate>
+    <abstract>
+      <para>High-frequency measurements of light absorbance were collected at multiple depths in Falling Creek Reservoir (FCR; Vinton, VA, USA) using a s::can Spectrolyser UV-Visible spectrophotometer coupled with a multiplexor pumping system. The system pumps water samples from individual depths into a flow-through cuvette where the UV-vis absorbance spectra of the sample are measured by the spectrophotometer. The system used in our study collected measurements of light absorbance every 2.5 nm wavelengths from 200 nm to 732.5 nm (optical path length of 10 mm) approximately at an hourly time step for seven monitoring depths in the reservoir. Data was collected during two periods; the first deployment (16 October to 9 November 2020) was to observe changes in Fe and Mn concentrations before, during, and after reservoir fall turnover and the second deployment (26 May to 21 June 2021) was to observe the effects of engineered hypolimnetic oxygenation on Fe and Mn concentrations. Partial least squares regression models were developed to generate predictions of total and soluble Fe and Mn concentrations based on the correlation between absorbance spectra and sampling data.</para>
+    </abstract>
+    <keywordSet>
+      <keyword>Carey Lab</keyword>
+      <keyword>Virginia Tech</keyword>
+      <keyword>Western Virginia Water Authority</keyword>
+      <keyword>Falling Creek Reservoir</keyword>
+      <keywordThesaurus>carey lab controlled vocabulary</keywordThesaurus>
+    </keywordSet>
+    <keywordSet>
+      <keyword>Reservoir</keyword>
+      <keyword>Lake</keyword>
+      <keyword>iron</keyword>
+      <keyword>manganese</keyword>
+      <keywordThesaurus>cuahsi controlled vocabulary</keywordThesaurus>
+    </keywordSet>
+    <keywordSet>
+      <keyword>Lakes</keyword>
+      <keywordThesaurus>lter controlled vocabulary</keywordThesaurus>
+    </keywordSet>
+    <additionalInfo>
+      <para>Authorship contributions:&#13;
+NWH, FB, and MES co-conceived the design of the study. NWH led field sampling, and MES, BB, and ABP assisted in field sampling. FB, CCC, and BB conducted the initial field testing for the MUX and development of the PLSR analysis workflow.&#13;
+</para>
+    </additionalInfo>
+    <intellectualRights>
+      <para>This information is released under the Creative Commons license - Attribution - CC BY (https://creativecommons.org/licenses/by/4.0/). The consumer of these data ("Data User" herein) is required to cite it appropriately in any publication that results from its use. The Data User should realize that these data may be actively used by others for ongoing research and that coordination may be necessary to prevent duplicate publication. The Data User is urged to contact the authors of these data if any questions about methodology or results occur. Where appropriate, the Data User is encouraged to consider collaboration or co-authorship with the authors. The Data User should realize that misinterpretation of data may occur if used out of context of the original study. While substantial efforts are made to ensure the accuracy of data and associated documentation, complete accuracy of data sets cannot be guaranteed. All data are made available "as is." The Data User should be aware, however, that data are updated periodically and it is the responsibility of the Data User to check for new versions of the data. The data authors and the repository where these data were obtained shall not be liable for damages resulting from any use or misinterpretation of the data. Thank you.
+</para>
+    </intellectualRights>
+    <coverage>
+      <geographicCoverage>
+        <geographicDescription>Falling Creek Reservoir is located in Vinton, Virginia, USA</geographicDescription>
+        <boundingCoordinates>
+          <westBoundingCoordinate>-79.839249</westBoundingCoordinate>
+          <eastBoundingCoordinate>-79.836009</eastBoundingCoordinate>
+          <northBoundingCoordinate>37.309589</northBoundingCoordinate>
+          <southBoundingCoordinate>37.30266</southBoundingCoordinate>
+        </boundingCoordinates>
+      </geographicCoverage>
+      <temporalCoverage>
+        <rangeOfDates>
+          <beginDate>
+            <calendarDate>2020-10-16</calendarDate>
+          </beginDate>
+          <endDate>
+            <calendarDate>2021-06-21</calendarDate>
+          </endDate>
+        </rangeOfDates>
+      </temporalCoverage>
+    </coverage>
+    <maintenance>
+      <description>ongoing</description>
+    </maintenance>
+    <contact>
+      <individualName>
+        <givenName>Madeline</givenName>
+        <givenName>E.</givenName>
+        <surName>Schreiber</surName>
+      </individualName>
+      <organizationName>Virginia Tech</organizationName>
+      <electronicMailAddress>mschreib@vt.edu</electronicMailAddress>
+      <userId directory="https://orcid.org">https://orcid.org/0000-0002-1858-7730</userId>
+    </contact>
+    <methods>
+      <methodStep>
+        <description>
+          <para>DATA COLLECTION: </para>
+          <para>We monitored high-frequency light absorbance at multiple depths in Falling Creek Reservoir (FCR; Vinton, VA, USA) using a s::can Spectrolyser UV-Visible spectrophotometer (s::can Messtechnik GmbH, Vienna, Austria) coupled with a multiplexor pumping system ('MUX' from MultiplexÔ, LLC; for technical details on the multiplexor pumping system and the sensor setup, refer to Birgand et al. 2016). The MUX pumps water samples from seven monitoring depths (0.1, 1.6, 3.8, 5, 6.2, 8, and 9m) into a flow-through cuvette where the UV-vis absorbance spectra of the sample are measured by the spectrophotometer. The system collected measurements of light absorbance every 2.5 nm wavelengths from 200 nm to 732.5 nm (optical path length of 10 mm) approximately at an hourly time step. </para>
+          <para>We took multiple steps to limit the influence of fouling of the internal components of the MUX system, due to precipitation of Fe in contact with oxygen in the measuring cuvette. Between each pump cycle, deionized water was flushed through the system. At the end of each pump sequence (one sample from each depth), dilute hydrochloric acid (5%) was automatically pumped through the system and allowed to sit in the flow-through cuvette for approximately 2 minutes. We also collected a reference measurement in air at the end of each cycle, which was useful in determining the extent of fouling. Despite these efforts, some fouling was still evident during certain time periods. Fouling was most pronounced in the lower wavelengths (200-250 nm) and therefore we removed values for wavelengths less than 250 nm before fitting PLSR models.</para>
+          <para>FCR is equipped with an engineered hypolimnetic oxygenation system (for full details see Gerling et al. 2014) which can be activated to increase hypolimnetic dissolved oxygen (DO) without altering reservoir stratification.</para>
+          <para>The data file ‘MUX_FP_TS.csv’ includes the raw time series of high-frequency absorbance spectra collected during two deployments: the first deployment captured the natural oxygenation and mixing processes that occurred during reservoir turnover and lasted from 16 October to 9 November 2020.  During this time period the HOx system was on, so the hypolimnion was oxic before turnover, but the reservoir was thermally stratified. The second deployment was conducted between 26 May and 21 June 2021, excluding 11:00 EDT 31 May 2021 until 14:30 EDT 4 June 2021 when the MUX was not collecting data due to technical issues. The HOx system was initiated on 11 June 2021 at 11:00 EDT. This deployment captured the engineered oxygenation and mixing processes resulting from the initiation of HOx operation. The reservoir was thermally-stratified and the hypolimnion was anoxic (DO &lt; 1 mg/L) prior to HOx operation and thus, while HOx operation added oxygen to the hypolimnion, we observed a limited increase in DO concentrations due to high chemical oxygen demand. The HOx system induced internal mixing within the hypolimnion, but the overall thermal stratification of the reservoir was not affected.</para>
+          <para>PARTIAL LEAST SQUARES REGRESSION (PLSR) MODELING: </para>
+          <para>The R script ‘1_Overlaps.R’ includes code for aggregating and cleaning the time series of absorbance spectra from files generated by the s::can spectrophotometer into a single dataframe. It then prepares the data for calibrating PLSR models by matching the spectrophotometer measurements to sampling data based on the time and depth of measurement or sampling. The R script ‘2_PLSR_MUX_bootstrap.R’ is used to fit PLSR models and compute predictions of total and soluble Fe and Mn concentrations based on the correlation between absorbance spectra and sampling data. The Fe and Mn sampling dataset used for calibration, including methods for sample collection and analysis, can be found in Schreiber et al. (2022). Individual steps in the PLSR modeling workflow are detailed in the provided script, but some general information is provided below.</para>
+          <para>Model building was conducted using the pls package (Mevik et al. 2020; R Core Team 2022). The pls package has a built-in function for determining the number of model components based on the root mean squared error of prediction (RMSEP) using 10-fold cross validation (Mevik et al. 2020). It has been suggested that the number of components should not exceed 10% of the total number of observations used to calibrate the model (Mevik et al. 2020). We followed this rule to the greatest extent possible. In some cases, the number of components slightly exceeded the 10% requirement, but this only occurred when including an additional component would substantially decrease the RMSEP determined by 10-fold cross validation, while also improving the variance explained by the model. </para>
+          <para>Calibration datasets were assessed for potential outliers using an ensemble approach implemented in the R package enpls (Xiao et al. 2019). For each model, an ensemble of 50 PLSR sub-models was generated using Monte Carlo resampling and the empirical predictive error distribution for each sample was used to identify outliers. Samples with a mean predictive error greater than 3 standard deviations from the mean predictive error for all samples or with a standard deviation greater than 3 times the mean standard deviation of all samples were considered potential outliers (Cao et al. 2017). However, we took a conservative approach and did not eliminate all samples that met this criteria, but rather only removed samples that were identified not only as outliers by the aforementioned method but also led to a deterioration of model fit, showed signs of sampling/analytical error, or were collected during times of cuvette fouling. Details on the final sample size of calibration for each model can be found in Table 1 of the accompanying manuscript for this data package.</para>
+          <para>To assess the uncertainty of the predictions made using PLSR, we calculated nonparametric bootstrap predictive intervals following methods described by Denham (1997). Model skill was assessed using the coefficient of determination (R2) from the linear regression between predicted and observed values, as well as the root mean squared error of prediction (RMSEP) for each model (following Wold et al. 2001 and Mevik et al. 2020).</para>
+          <para>Separate PLSR models were developed for each deployment, variable (total Fe, soluble Fe, total Mn, and soluble Mn) and depth layer. Epilimnion models included data from 0.1, 1.6, and 3.8 m and hypolimnion models included data from 6.2, 8.0, and 9.0 m. Although we also collected data from 5.0 m, we did not include them in our analyses since this is at the transition between the two layers (metalimnion; see McClure et al. 2018) and thus not applicable to either layer. We developed separate models for the Turnover Deployment and the Oxygen On Deployment. In the end, we had four separate models for each of the four variables (total and soluble Fe and Mn), resulting in 16 different models. In some cases, PLSR predicted slightly negative concentration values. For the purposes of this analysis, we report the actual predicted values (including negative concentrations), but suggest that future users of this data package consider negative values to have a value of 0 mg/L for all variables. The data file ‘MUX_predictions_boot.csv’ contains the predicted time series of total and soluble Fe and Mn concentrations, with 90% predictive intervals, for the two deployment periods in this study. Note that these results are reflective of our particular modeling workflow, which involves subjective decision-making at multiple steps in the process (i.e., removing outliers, choosing the number of components) and therefore subsequent users of this data package may not obtain the exact same results unless they reproduce our process exactly. </para>
+          <para>REFERENCES:</para>
+          <para>Birgand, F. et al. First report of a novel multiplexer pumping system coupled to a water quality probe to collect high temporal frequency in situ water chemistry measurements at multiple sites. Limnol. Oceanogr. Methods 14, 767–783 (2016).</para>
+          <para>Cao, D.S., Deng, Z.K., Zhu, M.F., Yao, Z.J., Dong, J., Zhao, R.G., 2017. Ensemble partial least squares regression for descriptor selection, outlier detection, applicability domain assessment, and ensemble modeling in QSAR/QSPR modeling. J. Chemom. 31, 1–17. https://doi.org/10.1002/cem.2922</para>
+          <para>Denham, M. C. Prediction intervals in partial least squares. J. Chemom. 11, 39–52 (1997).</para>
+          <para>Gerling, A.B., Browne, R.G., Gantzer, P.A., Mobley, M.H., Little, J.C., Carey, C.C., 2014. First report of the successful operation of a side stream supersaturation hypolimnetic oxygenation system in a eutrophic, shallow reservoir. Water Res. 67, 129–143. https://doi.org/10.1016/j.watres.2014.09.002</para>
+          <para>McClure, R. P. et al. Metalimnetic oxygen minima alter the vertical profiles of carbon dioxide and methane in a managed freshwater reservoir. Sci. Total Environ. 636, 610–620 (2018).</para>
+          <para>Mevik, B.H., Wehrens, R., and Liland, K.H. (2020). pls: Partial Least Squares and Principal Component Regression. R package version 2.7-3. https://CRAN.R-project.org/package=pls</para>
+          <para>R Core Team (2022). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. URL https://www.R-project.org/.</para>
+          <para>Schreiber, M.E., N.W. Hammond, K.M. Krueger, Z.W. Munger, C.L. Ming, A. Breef-Pilz, and C.C. Carey. 2022. Time series of total and soluble iron and manganese concentrations from Falling Creek Reservoir and Beaverdam Reservoir in southwestern Virginia, USA from 2014 through 2021 ver 6. Environmental Data Initiative. https://doi.org/10.6073/pasta/7cdf3d7a234963b265f09b7d6d08f357.</para>
+          <para>Wold, S., Sjöström, M. &amp; Eriksson, L. PLS-regression: A basic tool of chemometrics. Chemom. Intell. Lab. Syst. 58, 109–130 (2001).</para>
+          <para>Xiao, N., Cao, D.S., Li, M.Z., and Xu, Q.S. (2019). enpls: Ensemble Partial Least Squares Regression. R package version 6.1. https://CRAN.R-project.org/package=enpls</para>
+          <para/>
+        </description>
+      </methodStep>
+    </methods>
+    <project>
+      <title>No project title to report</title>
+      <personnel>
+        <individualName>
+          <givenName>Nicholas</givenName>
+          <givenName>W.</givenName>
+          <surName>Hammond</surName>
+        </individualName>
+        <organizationName>Virginia Tech</organizationName>
+        <electronicMailAddress>hammondnw@vt.edu</electronicMailAddress>
+        <userId directory="https://orcid.org">https://orcid.org/0000-0003-2975-8280</userId>
+        <role>Principal Investigator</role>
+      </personnel>
+      <funding>Geological Society of America</funding>
+      <relatedProject>
+        <title>No project title to report</title>
+        <personnel>
+          <individualName>
+            <givenName>Cayelan</givenName>
+            <givenName>C.</givenName>
+            <surName>Carey</surName>
+          </individualName>
+          <organizationName>Virginia Tech</organizationName>
+          <electronicMailAddress>Cayelan@vt.edu</electronicMailAddress>
+          <userId directory="https://orcid.org">https://orcid.org/0000-0001-8835-4476</userId>
+          <role>Principal Investigator</role>
+        </personnel>
+        <funding>Western Virginia Water Authority</funding>
+      </relatedProject>
+      <relatedProject>
+        <title>SCC-IRG Track 2: Resilient Water Systems: Integrating Environmental Sensor Networks and Real-Time Forecasting to Adaptively Manage Drinking Water Quality and Build Social Trust</title>
+        <personnel>
+          <individualName>
+            <givenName>Cayelan</givenName>
+            <givenName>C.</givenName>
+            <surName>Carey</surName>
+          </individualName>
+          <organizationName>Virginia Tech</organizationName>
+          <electronicMailAddress>Cayelan@vt.edu</electronicMailAddress>
+          <userId directory="https://orcid.org">https://orcid.org/0000-0001-8835-4476</userId>
+          <role>Principal Investigator</role>
+        </personnel>
+        <funding>National Science Foundation 1737424</funding>
+      </relatedProject>
+      <relatedProject>
+        <title>Collaborative Research: Consequences of changing oxygen availability for carbon cycling in freshwater ecosystems</title>
+        <personnel>
+          <individualName>
+            <givenName>Cayelan</givenName>
+            <givenName>C.</givenName>
+            <surName>Carey</surName>
+          </individualName>
+          <organizationName>Virginia Tech</organizationName>
+          <electronicMailAddress>Cayelan@vt.edu</electronicMailAddress>
+          <userId directory="https://orcid.org">https://orcid.org/0000-0001-8835-4476</userId>
+          <role>Principal Investigator</role>
+        </personnel>
+        <funding>National Science Foundation 1753639</funding>
+      </relatedProject>
+      <relatedProject>
+        <title>Collaborative Research: CIBR: Cyberinfrastructure Enabling End-to-End Workflows for Aquatic Ecosystem Forecasting</title>
+        <personnel>
+          <individualName>
+            <givenName>Cayelan</givenName>
+            <givenName>C.</givenName>
+            <surName>Carey</surName>
+          </individualName>
+          <organizationName>Virginia Tech</organizationName>
+          <electronicMailAddress>Cayelan@vt.edu</electronicMailAddress>
+          <userId directory="https://orcid.org">https://orcid.org/0000-0001-8835-4476</userId>
+          <role>Principal Investigator</role>
+        </personnel>
+        <funding>National Science Foundation 1933016</funding>
+      </relatedProject>
+    </project>
+    <dataTable>
+      <entityName>MUX_FP_TS.csv</entityName>
+      <entityDescription>time series of uv-vis absorbance spectra</entityDescription>
+      <physical>
+        <objectName>MUX_FP_TS.csv</objectName>
+        <size unit="bytes">57965192</size>
+        <authentication method="MD5">d644ffbd5e82bfb6d192072ae0948212</authentication>
+        <dataFormat>
+          <textFormat>
+            <numHeaderLines>1</numHeaderLines>
+            <recordDelimiter>\r\n</recordDelimiter>
+            <attributeOrientation>column</attributeOrientation>
+            <simpleDelimited>
+              <fieldDelimiter>,</fieldDelimiter>
+            </simpleDelimited>
+          </textFormat>
+        </dataFormat>
+      </physical>
+      <attributeList>
+        <attribute>
+          <attributeName>DateTime</attributeName>
+          <attributeDefinition>Date and time of measurement. All data were collected in the eastern time zone of the U.S.A., with daylight savings time observed</attributeDefinition>
+          <storageType>date</storageType>
+          <measurementScale>
+            <dateTime>
+              <formatString>YYYY-MM-DD hh:mm:ss</formatString>
+              <dateTimeDomain/>
+            </dateTime>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>value is missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>Valve</attributeName>
+          <attributeDefinition>ID number for valve on MUX corresponding to depth below surface where sample was pumped; 1 = 0.1m, 2 = 1.6m, 3 = 3.8m, 4 = 5.0m, 5 = 6.2m, 6 = 8.0m, 7 = 9.0m, 8 = NA, 9 = acid rinse, 10 = air, 11 = NA, 12 = air</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>dimensionless</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>natural</numberType>
+                <bounds>
+                  <minimum exclusive="false">1</minimum>
+                  <maximum exclusive="false">12</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>value is missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>Depth</attributeName>
+          <attributeDefinition>Depth below surface corresponding to where sample was pumped</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Depth below surface corresponding to where sample was pumped</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>value is missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>wavelength</attributeName>
+          <attributeDefinition>Wavelength of absorbance measurement</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>nanometer</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">200</minimum>
+                  <maximum exclusive="false">732.5</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>value is missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>absorbance</attributeName>
+          <attributeDefinition>Absorbance of sample</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>dimensionless</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">1.7608</minimum>
+                  <maximum exclusive="false">60.2879</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>value is missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+      </attributeList>
+      <numberOfRecords>1363822</numberOfRecords>
+    </dataTable>
+    <dataTable>
+      <entityName>MUX_predictions_boot.csv</entityName>
+      <entityDescription>time series of predicted Fe and Mn concentrations</entityDescription>
+      <physical>
+        <objectName>MUX_predictions_boot.csv</objectName>
+        <size unit="bytes">726486</size>
+        <authentication method="MD5">5086a1d3aa9d90d5cef63a5ae1ec4b6b</authentication>
+        <dataFormat>
+          <textFormat>
+            <numHeaderLines>1</numHeaderLines>
+            <recordDelimiter>\r\n</recordDelimiter>
+            <attributeOrientation>column</attributeOrientation>
+            <simpleDelimited>
+              <fieldDelimiter>,</fieldDelimiter>
+            </simpleDelimited>
+          </textFormat>
+        </dataFormat>
+      </physical>
+      <attributeList>
+        <attribute>
+          <attributeName>DateTime</attributeName>
+          <attributeDefinition>Date and time of predicted concentration. All data were collected in the eastern time zone of the U.S.A., with daylight savings time observed</attributeDefinition>
+          <storageType>date</storageType>
+          <measurementScale>
+            <dateTime>
+              <formatString>MM/DD/YYYY HH:MM</formatString>
+              <dateTimeDomain/>
+            </dateTime>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>value is missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>Depth_m</attributeName>
+          <attributeDefinition>Depth below surface corresponding to predicted concentration</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>meter</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">0.1</minimum>
+                  <maximum exclusive="false">9</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>value is missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>TFe_mgL</attributeName>
+          <attributeDefinition>predicted total iron concentration</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>milligramsPerLiter</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">-0.948252708</minimum>
+                  <maximum exclusive="false">7.900391971</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>value is missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>TMn_mgL</attributeName>
+          <attributeDefinition>predicted total manganese concentration</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>milligramsPerLiter</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">-0.662147196</minimum>
+                  <maximum exclusive="false">3.093902569</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>value is missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>SFe_mgL</attributeName>
+          <attributeDefinition>predicted soluble iron concentration</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>milligramsPerLiter</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">-1.523910053</minimum>
+                  <maximum exclusive="false">8.191826268</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>value is missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>SMn_mgL</attributeName>
+          <attributeDefinition>predicted soluble manganese concentration</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>milligramsPerLiter</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">-0.626891769</minimum>
+                  <maximum exclusive="false">3.61321914</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>value is missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>uncerSMn_max</attributeName>
+          <attributeDefinition>Upper bound to 90% predictive interval for soluble manganese concentration</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>milligramsPerLiter</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">-0.43261325</minimum>
+                  <maximum exclusive="false">4.047211688</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>value is missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>uncerSMn_min</attributeName>
+          <attributeDefinition>Lower bound to 90% predictive interval for soluble manganese concentration</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>milligramsPerLiter</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">-0.687762065</minimum>
+                  <maximum exclusive="false">3.185982485</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>value is missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>uncerSFe_max</attributeName>
+          <attributeDefinition>Upper bound to 90% predictive interval for soluble iron concentration</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>milligramsPerLiter</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">0.02277044</minimum>
+                  <maximum exclusive="false">10.86703082</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>value is missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>uncerSFe_min</attributeName>
+          <attributeDefinition>Lower bound to 90% predictive interval for soluble iron concentration</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>milligramsPerLiter</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">-3.257277155</minimum>
+                  <maximum exclusive="false">5.749855169</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>value is missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>uncerTMn_max</attributeName>
+          <attributeDefinition>Upper bound to 90% predictive interval for total manganese concentration</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>milligramsPerLiter</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">-0.475467042</minimum>
+                  <maximum exclusive="false">3.424448186</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>value is missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>uncerTMn_min</attributeName>
+          <attributeDefinition>Lower bound to 90% predictive interval for total manganese concentration</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>milligramsPerLiter</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">-0.727249954</minimum>
+                  <maximum exclusive="false">2.382127561</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>value is missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>uncerTFe_max</attributeName>
+          <attributeDefinition>Upper bound to 90% predictive interval for total iron concentration</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>milligramsPerLiter</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">-0.479281464</minimum>
+                  <maximum exclusive="false">9.939961708</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>value is missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>uncerTFe_min</attributeName>
+          <attributeDefinition>Lower bound to 90% predictive interval for total iron concentration</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>milligramsPerLiter</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">-1.75738068</minimum>
+                  <maximum exclusive="false">5.768096114</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>value is missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+      </attributeList>
+      <numberOfRecords>4428</numberOfRecords>
+    </dataTable>
+    <otherEntity>
+      <entityName>1_Overlaps_MUX.R</entityName>
+      <entityDescription>Script for aggregating, cleaning, and preparing raw data for PLSR analysis</entityDescription>
+      <physical>
+        <objectName>1_Overlaps_MUX.R</objectName>
+        <size unit="bytes">13395</size>
+        <authentication method="MD5">885aac524b915525919a68375d7b2039</authentication>
+        <dataFormat>
+          <externallyDefinedFormat>
+            <formatName>text/plain</formatName>
+          </externallyDefinedFormat>
+        </dataFormat>
+      </physical>
+      <entityType>unknown</entityType>
+    </otherEntity>
+    <otherEntity>
+      <entityName>2_PLSR_MUX_bootstrap.R</entityName>
+      <entityDescription>PLSR Analysis Script</entityDescription>
+      <physical>
+        <objectName>2_PLSR_MUX_bootstrap.R</objectName>
+        <size unit="bytes">13027</size>
+        <authentication method="MD5">2c4c5605a4ea9c6b20b6f3c986a61863</authentication>
+        <dataFormat>
+          <externallyDefinedFormat>
+            <formatName>text/plain</formatName>
+          </externallyDefinedFormat>
+        </dataFormat>
+      </physical>
+      <entityType>unknown</entityType>
+    </otherEntity>
+  </dataset>
+  <additionalMetadata>
+    <metadata>
+      <emlEditor>
+        <app>EMLassemblyline</app>
+        <release>3.5.5</release>
+      </emlEditor>
+    </metadata>
+  </additionalMetadata>
+</eml:eml>

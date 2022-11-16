@@ -1,0 +1,2 @@
+﻿Authorship contributions:
+NWH, FB, and MES co-conceived the design of the study. NWH led field sampling, and MES, BB, and ABP assisted in field sampling. FB, CCC, and BB conducted the initial field testing for the MUX and development of the PLSR analysis workflow.
