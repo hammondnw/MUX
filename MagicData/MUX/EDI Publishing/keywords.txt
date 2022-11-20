@@ -8,3 +8,5 @@ Lake	cuahsi controlled vocabulary
 Lakes	lter controlled vocabulary
 iron	cuahsi controlled vocabulary
 manganese	cuahsi controlled vocabulary
+high frequency data	carey lab controlled vocabulary
+sensors	carey lab controlled vocabulary

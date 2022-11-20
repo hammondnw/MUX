@@ -206,49 +206,54 @@ TMn_plot = ggplot() +
     panel.grid = element_line(color = "lightgrey", size = 0.5)) 
   
 SFe_plot = ggplot() +
-  geom_path(data=MUX_preds, aes(x=DateTime,y=SFe_mgL, color= as.character(Depth_m)), size=1.5) +
+  geom_path(data=MUX_preds, aes(x=DateTime,y=SFe_mgL, color= as.character(Depth_m)), size=0.8) +
   geom_ribbon(data=MUX_preds, aes(ymin=uncerSFe_min, ymax=uncerSFe_max, x=DateTime, fill = as.character(Depth_m)), alpha = 0.2)+
-  geom_point(data=dataWQ, aes(x=DateTime, y=SFe_mgL, colour= as.character(Depth_m)), size=7) +
+  geom_point(data=dataWQ, aes(x=DateTime, y=SFe_mgL, colour= as.character(Depth_m)), size=1.5) +
   labs(x="Date",y="Soluble Fe (mg/L)", color = "Depth (m)", fill="90% PI") +
   theme_bw() +
   theme(legend.position="right")+
-  geom_vline(data=turnover, aes(xintercept=Date), linetype="dashed", color="black", size=2) +
+  geom_vline(data=turnover, aes(xintercept=Date), linetype="dashed", color="black", size=1) +
   scale_x_datetime(date_minor_breaks = "1 day", 
                    limits = c(Begin_time,End_time),
                    labels = date_format("%b-%d")) +
+  guides(fill = "none") +
   theme(
     axis.text.x = element_text(size= 12),
     axis.text.y.left = element_text(size= 12),
     axis.title.x = element_blank(),
-    axis.title.y = element_text(color = "black", size=14),
+    axis.title.y = element_text(color = "black", size=12),
     legend.text = element_text(size = 8),
     legend.title = element_text(size = 10),
     legend.key = element_rect(size=2),
     legend.box.background = element_rect(),
-    legend.box = "horizontal",
-    panel.grid = element_line(color = "lightgrey", size = 0.5)) 
+    #legend.box = "horizontal",
+    #legend.spacing.x = unit(5,"mm"),
+    panel.grid = element_line(color = "lightgrey", size = 0.5))  
+
 SMn_plot = ggplot() +
-  geom_path(data=MUX_preds, aes(x=DateTime,y=SMn_mgL, color= as.character(Depth_m)), size=1.5) +
+  geom_path(data=MUX_preds, aes(x=DateTime,y=SMn_mgL, color= as.character(Depth_m)), size=0.8) +
   geom_ribbon(data=MUX_preds, aes(ymin=uncerSMn_min, ymax=uncerSMn_max, x=DateTime, fill = as.character(Depth_m)), alpha = 0.2)+
-  geom_point(data=dataWQ, aes(x=DateTime, y=SMn_mgL, colour= as.character(Depth_m)), size=7) +
+  geom_point(data=dataWQ, aes(x=DateTime, y=SMn_mgL, colour= as.character(Depth_m)), size=1.5) +
   labs(x="Date",y="Soluble Mn (mg/L)", color = "Depth (m)", fill="90% PI") +
   theme_bw() +
   theme(legend.position="right")+
-  geom_vline(data=turnover, aes(xintercept=Date), linetype="dashed", color="black", size=2) +
+  geom_vline(data=turnover, aes(xintercept=Date), linetype="dashed", color="black", size=1) +
   scale_x_datetime(date_minor_breaks = "1 day", 
                    limits = c(Begin_time,End_time),
                    labels = date_format("%b-%d")) +
+  guides(fill = "none") +
   theme(
     axis.text.x = element_text(size= 12),
     axis.text.y.left = element_text(size= 12),
     axis.title.x = element_blank(),
-    axis.title.y = element_text(color = "black", size=14),
+    axis.title.y = element_text(color = "black", size=12),
     legend.text = element_text(size = 8),
     legend.title = element_text(size = 10),
     legend.key = element_rect(size=2),
     legend.box.background = element_rect(),
-    legend.box = "horizontal",
-    panel.grid = element_line(color = "lightgrey", size = 0.5)) 
+    #legend.box = "horizontal",
+    #legend.spacing.x = unit(5,"mm"),
+    panel.grid = element_line(color = "lightgrey", size = 0.5))  
 
 
 # Thermocline depth & Schmidt stability
@@ -463,7 +468,7 @@ AirTemp_plot = ggplot() +
 #### Create png file of multipanel plots ####
 
 # Figure 4
-jpeg('MUX20_Schmidt_Temp_DO_TFe_TMn_FullDepths_FullTS_111622.jpeg', width = 190, height = 240, units = 'mm', res = 600)
+jpeg('MUX20_Schmidt_Temp_DO_TFe_TMn_FullDepths_FullTS_111822.jpeg', width = 190, height = 240, units = 'mm', res = 600)
 
 schmidt_plot / Temp_plot / DO_plot / TFe_plot / TMn_plot + 
   plot_annotation(tag_levels = "A") & 
@@ -473,11 +478,11 @@ dev.off()
 
 
 # Figure SI_MUX20_SFe_SMn_predictions
-jpeg('MUX20_Schmidt_Temp_DO_SFe_SMn_FullDepths_FullTS_100322.jpeg', width = 190, height = 240, units = 'mm', res = 600)
+jpeg('MUX20_Schmidt_Temp_DO_SFe_SMn_FullDepths_FullTS_111822.jpeg', width = 190, height = 240, units = 'mm', res = 600)
 
 schmidt_plot / Temp_plot / DO_plot / SFe_plot / SMn_plot + 
   plot_annotation(tag_levels = "A") & 
-  theme(plot.tag = element_text(size = 42, hjust = 0, vjust = 0))
+  theme(plot.tag = element_text(size = 12, hjust = 0, vjust = 0))
 
 dev.off()
 
@@ -510,51 +515,143 @@ MUX_preds = MUX_preds %>% mutate(Fe_ratio = SFe_mgL / TFe_mgL,
   ungroup(Depth_m)
 
 # Split MUX_preds by depth (for plotting)
-MUX_preds_hypo = MUX_preds %>% filter(Depth_m > 3.8)
-MUX_preds_epi = MUX_preds %>% filter(Depth_m <= 3.8)
+MUX_preds_hypo_20 = MUX_preds %>% filter(Depth_m > 3.8)
+MUX_preds_epi_20 = MUX_preds %>% filter(Depth_m <= 3.8)
 
-dataWQ_hypo = dataWQ %>% filter(Depth_m > 3.8)
-dataWQ_epi = dataWQ %>% filter(Depth_m <= 3.8)
+dataWQ_hypo_20 = dataWQ %>% filter(Depth_m > 3.8)
+dataWQ_epi_20 = dataWQ %>% filter(Depth_m <= 3.8)
 
 
 
 
 
 #### code for plotting Sol:Tot Fe and Mn on same plot (at all three hypo depths) ####
-mux_preds_ratios = MUX_preds_hypo %>% rename(Fe = Fe_ratio_ma10, Mn = Mn_ratio_ma10) %>% 
-  pivot_longer(cols = c(18:19),names_to = "variable", values_to = "ratio") # %>% 
+#mux_preds_ratios_20 = MUX_preds_hypo %>% rename(Fe = Fe_ratio_ma10, Mn = Mn_ratio_ma10) %>% 
+#  pivot_longer(cols = c(18:19),names_to = "variable", values_to = "ratio") # %>% 
   #filter(Depth ==9)
 
 
-Fe_Mn_ratio_plot = ggplot() +
-  geom_path(data=mux_preds_ratios, aes(x=DateTime,y=ratio, color= as.factor(Depth_m)), size=0.8) +
-  #geom_ribbon(data=MUX_preds, aes(ymin=uncerTFe_min, ymax=uncerTFe_max, x=DateTime, fill = as.character(Depth)), alpha = 0.2)+
-  #geom_point(data=dataWQ, aes(x=DateTime, y=TFe_mgL, colour= as.character(Depth_m)), size=3.5) +
-  labs(x="Date",y="Soluble:Total", title = "2020 Turnover Deployment", color = "Depth (m)") +
+Fe_ratio_plot_20 = ggplot() +
+  geom_path(data=MUX_preds_hypo_20, aes(x=DateTime,y=Fe_ratio_ma10, color= as.factor(Depth_m)), size=0.8) +
+  labs(x="Date",y="Soluble:Total Fe", title = "Turnover Deployment", color = "Depth (m)") +
   ylim(0,1) +
   theme(legend.position="right")+
-  geom_vline(data=turnover, aes(xintercept=Date), linetype="dashed", color="black", size=1) +
+  theme_bw() +
+  geom_vline(data=turnover, aes(xintercept=Date), linetype="dashed", color="black", size=0.8) +
   #theme_ipsum() +
   scale_x_datetime(date_minor_breaks = "1 day", 
                    limits = c(Begin_time,End_time),
                    labels = date_format("%Y-%m-%d")) +
   scale_colour_manual(values = c("#00C19F","#619CFF","#FF61C3")) +
-  facet_wrap(~variable, nrow = 2) +
+  #facet_wrap(~variable, nrow = 2) +
   theme(
     axis.text.x = element_text(size= 12),
     axis.text.y.left = element_text(size= 12),
     axis.title.x = element_blank(),
-    axis.title.y = element_text(color = "black", size=14),
-    legend.text = element_text(size = 12),
-    legend.title = element_text(size = 12),
+    axis.title.y = element_text(color = "black", size=12),
+    #legend.position = "none",
+    legend.text = element_text(size = 10),
+    legend.title = element_text(size = 10),
+    legend.key = element_rect(size=2),
     legend.box.background = element_rect(),
-    title = element_text(size = 16),
-    strip.text = element_text(size=15)
+    title = element_text(size = 12),
+    panel.grid = element_line(color = "lightgrey", size = 0.5)
+    #strip.text = element_text(size=15)
   )
 
-png('MUX20_TFe_TMn_Ratios_hypo_FullTS_110922.png', width = 190, height = 120, units = 'mm', res = 600)
+Mn_ratio_plot_20 = ggplot() +
+  geom_path(data=MUX_preds_hypo_20, aes(x=DateTime,y=Mn_ratio_ma10, color= as.factor(Depth_m)), size=0.8) +
+  labs(x="Date",y="Soluble:Total Mn", color = "Depth (m)") +
+  ylim(0,1) +
+  theme(legend.position="right")+
+  theme_bw() +
+  geom_vline(data=turnover, aes(xintercept=Date), linetype="dashed", color="black", size=0.8) +
+  #theme_ipsum() +
+  scale_x_datetime(date_minor_breaks = "1 day", 
+                   limits = c(Begin_time,End_time),
+                   labels = date_format("%Y-%m-%d")) +
+  scale_colour_manual(values = c("#00C19F","#619CFF","#FF61C3")) +
+  #facet_wrap(~variable, nrow = 2) +
+  theme(
+    axis.text.x = element_text(size= 12),
+    axis.text.y.left = element_text(size= 12),
+    axis.title.x = element_blank(),
+    axis.title.y = element_text(color = "black", size=12),
+    #legend.position = "none",
+    legend.text = element_text(size = 10),
+    legend.title = element_text(size = 10),
+    legend.key = element_rect(size=2),
+    legend.box.background = element_rect(),
+    #title = element_text(size = 12),
+    panel.grid = element_line(color = "lightgrey", size = 0.5)
+    #strip.text = element_text(size=15)
+  )
 
-Fe_Mn_ratio_plot
+Fe_ratio_plot_21 = ggplot() +
+  geom_path(data=MUX_preds_hypo_21, aes(x=DateTime,y=Fe_ratio_ma10, color= as.factor(Depth_m)), size=0.8) +
+  labs(x="Date",y="Soluble:Total Fe", title = "Oxygen On Deployment", color = "Depth (m)") +
+  ylim(0,1) +
+  theme(legend.position="right")+
+  theme_bw() +
+  geom_vline(data=SSS, aes(xintercept=Date), linetype="dashed", color="black", size=0.8) +
+  #theme_ipsum() +
+  scale_x_datetime(date_minor_breaks = "1 day", 
+                   limits = c(Begin_time_21,End_time_21),
+                   labels = date_format("%Y-%m-%d")) +
+  scale_colour_manual(values = c("#00C19F","#619CFF","#FF61C3")) +
+ # facet_wrap(~variable, nrow = 2) +
+  theme(
+    axis.text.x = element_text(size= 12),
+    axis.text.y.left = element_text(size= 12),
+    axis.title.x = element_blank(),
+    axis.title.y = element_text(color = "black", size=12),
+    #legend.position = "none",
+    legend.text = element_text(size = 10),
+    legend.title = element_text(size = 10),
+    legend.key = element_rect(size=2),
+    legend.box.background = element_rect(),
+    title = element_text(size = 12),
+    panel.grid = element_line(color = "lightgrey", size = 0.5)
+    #strip.text = element_text(size=15)
+  )
+
+Mn_ratio_plot_21 = ggplot() +
+  geom_path(data=MUX_preds_hypo_21, aes(x=DateTime,y=Mn_ratio_ma10, color= as.factor(Depth_m)), size=0.8) +
+  labs(x="Date",y="Soluble:Total Mn", color = "Depth (m)") +
+  ylim(0,1) +
+  theme(legend.position="right")+
+  theme_bw() +
+  geom_vline(data=SSS, aes(xintercept=Date), linetype="dashed", color="black", size=0.8) +
+  #theme_ipsum() +
+  scale_x_datetime(date_minor_breaks = "1 day", 
+                   limits = c(Begin_time_21,End_time_21),
+                   labels = date_format("%Y-%m-%d")) +
+  scale_colour_manual(values = c("#00C19F","#619CFF","#FF61C3")) +
+  #facet_wrap(~variable, nrow = 2) +
+  theme(
+    axis.text.x = element_text(size= 12),
+    axis.text.y.left = element_text(size= 12),
+    axis.title.x = element_blank(),
+    axis.title.y = element_text(color = "black", size=12),
+    #legend.position = "none",
+    legend.text = element_text(size = 10),
+    legend.title = element_text(size = 10),
+    legend.key = element_rect(size=2),
+    legend.box.background = element_rect(),
+   # title = element_text(size = 12),
+    panel.grid = element_line(color = "lightgrey", size = 0.5)
+    #strip.text = element_text(size=15)
+  )
+
+png('MUX_TFe_TMn_Ratios_hypo_FullTS_111822.png', width = 190, height = 200, units = 'mm', res = 600)
+
+
+Fe_ratio_plot_20 / Mn_ratio_plot_20 / Fe_ratio_plot_21 / Mn_ratio_plot_21 +
+  plot_layout(guides = 'collect') +
+  plot_annotation(tag_levels = "A") & 
+  theme(plot.tag = element_text(size = 12, hjust = 0, vjust = 0)) 
+  
+
 
 dev.off()
 

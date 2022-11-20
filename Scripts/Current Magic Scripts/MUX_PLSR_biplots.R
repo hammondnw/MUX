@@ -16,19 +16,19 @@ library(patchwork) # To display 2 charts together
 library(hrbrthemes)
 library(zoo)
 
-setwd("C:/Users/hammo/Documents/Magic Sensor PLSR/")
+setwd("./")
 
 ### Turnover Experiment ###
 
 # Read in MUX PLSR predictions
-MUX_preds = read_csv(paste0(getwd(),"/Raw_predictions/MUX20_predictions_boot_050622.csv"))
+MUX_preds = read_csv(paste0(getwd(),"/MagicData/MUX/Figures Files/MUX20_predictions_boot_111522.csv"))
 MUX_preds$DateTime = ymd_hms(MUX_preds$DateTime, tz="America/New_York")
 MUX_preds = MUX_preds %>% select(-c('...1')) %>% mutate(ID = "Pred")
 
 #### Read in FCR WQ data ####
-dataWQ <- read_csv(paste0(getwd(),"/Raw_predictions/MUX20_dataWQ_050622.csv"))
+dataWQ <- read_csv(paste0(getwd(),"/MagicData/MUX/Figures Files/MUX20_dataWQ_111522.csv"))
 dataWQ$DateTime = ymd_hms(dataWQ$DateTime, tz="America/New_York")
-dataWQ = dataWQ %>% select(-c('...1','ID')) %>% mutate(ID = "Obs")
+dataWQ = dataWQ %>% select(-c('...1')) %>% mutate(ID = "Obs")
 
 biplot_df = MUX_preds %>% filter(DateTime %in% dataWQ$DateTime) %>% 
   select(-c("uncerSMn_max", "uncerSMn_min", "uncerSFe_max", "uncerSFe_min",
@@ -52,29 +52,37 @@ TFe = ggplot(biplot_df_hypo, aes(x=TFe_mgL_Obs,y=TFe_mgL_Pred)) +
   geom_point() +
   geom_smooth(method='lm', se=FALSE, color='black') +
   theme_minimal() +
-  labs(x='Lab Measured Total Fe (mg/L)', y='PLSR Predicted Total Fe (mg/L)') +
-  stat_cor(aes(label = paste(..rr.label.., sep = "~`,`~")), label.y = 4.75) 
+  labs(x='Lab Measured Tot. Fe (mg/L)', y='PLSR Predicted Tot. Fe (mg/L)') +
+  stat_cor(aes(label = paste(..rr.label.., sep = "~`,`~")), label.y = 4.75)  +
+  theme(axis.title.x = element_text(size=8),
+        axis.title.y = element_text(color = "black", size=8))
   
 TMn = ggplot(biplot_df_hypo, aes(x=TMn_mgL_Obs,y=TMn_mgL_Pred)) +
   geom_point() +
   geom_smooth(method='lm', se=FALSE, color='black') +
   theme_minimal() +
-  labs(x='Lab Measured Total Mn (mg/L)', y='PLSR Predicted Total Mn (mg/L)') +
-  stat_cor(aes(label = paste(..rr.label.., sep = "~`,`~")), label.y = 2.2) 
+  labs(x='Lab Measured Tot. Mn (mg/L)', y='PLSR Predicted Tot. Mn (mg/L)') +
+  stat_cor(aes(label = paste(..rr.label.., sep = "~`,`~")), label.y = 2.2) +
+  theme(axis.title.x = element_text(size=8),
+        axis.title.y = element_text(color = "black", size=8))
 
 SFe = ggplot(biplot_df_hypo, aes(x=SFe_mgL_Obs,y=SFe_mgL_Pred)) +
   geom_point() +
   geom_smooth(method='lm', se=FALSE, color='black') +
   theme_minimal() +
-  labs(x='Lab Measured Soluble Fe (mg/L)', y='PLSR Predicted Soluble Fe (mg/L)') +
-  stat_cor(aes(label = paste(..rr.label.., sep = "~`,`~")), label.y = 0.075, digits = 1) 
+  labs(x='Lab Measured Sol. Fe (mg/L)', y='PLSR Predicted Sol. Fe (mg/L)') +
+  stat_cor(aes(label = paste(..rr.label.., sep = "~`,`~")), label.y = 0.075, digits = 1)  +
+  theme(axis.title.x = element_text(size=8),
+        axis.title.y = element_text(color = "black", size=8))
 
 SMn = ggplot(biplot_df_hypo, aes(x=SMn_mgL_Obs,y=SMn_mgL_Pred)) +
   geom_point() +
   geom_smooth(method='lm', se=FALSE, color='black') +
   theme_minimal() +
-  labs(x='Lab Measured Soluble Mn (mg/L)', y='PLSR Predicted Soluble Mn (mg/L)') +
-  stat_cor(aes(label = paste(..rr.label.., sep = "~`,`~")), label.y = 2, digits = 2) 
+  labs(x='Lab Measured Sol. Mn (mg/L)', y='PLSR Predicted Sol. Mn (mg/L)') +
+  stat_cor(aes(label = paste(..rr.label.., sep = "~`,`~")), label.y = 2, digits = 2) +
+  theme(axis.title.x = element_text(size=8),
+        axis.title.y = element_text(color = "black", size=8))
 
 
 # Turnover Experiment, Epilimnion Models #
@@ -83,45 +91,46 @@ TFe_epi = ggplot(biplot_df_epi, aes(x=TFe_mgL_Obs,y=TFe_mgL_Pred)) +
   geom_point() +
   geom_smooth(method='lm', se=FALSE, color='black') +
   theme_minimal() +
-  labs(x='Lab Measured Total Fe (mg/L)', y='PLSR Predicted Total Fe (mg/L)') +
-  stat_cor(aes(label = paste(..rr.label.., sep = "~`,`~")), label.y = 1.5) 
+  labs(x='Lab Measured Tot. Fe (mg/L)', y='PLSR Predicted Tot. Fe (mg/L)') +
+  stat_cor(aes(label = paste(..rr.label.., sep = "~`,`~")), label.y = 1.5) +
+  theme(axis.title.x = element_text(size=8),
+        axis.title.y = element_text(color = "black", size=8))
 
 TMn_epi = ggplot(biplot_df_epi, aes(x=TMn_mgL_Obs,y=TMn_mgL_Pred)) +
   geom_point() +
   geom_smooth(method='lm', se=FALSE, color='black') +
   theme_minimal() +
-  labs(x='Lab Measured Total Mn (mg/L)', y='PLSR Predicted Total Mn (mg/L)') +
-  stat_cor(aes(label = paste(..rr.label.., sep = "~`,`~")), label.y = 0.75) 
+  labs(x='Lab Measured Tot. Mn (mg/L)', y='PLSR Predicted Tot. Mn (mg/L)') +
+  stat_cor(aes(label = paste(..rr.label.., sep = "~`,`~")), label.y = 0.75) +
+  theme(axis.title.x = element_text(size=8),
+        axis.title.y = element_text(color = "black", size=8))
 
 SFe_epi = ggplot(biplot_df_epi, aes(x=SFe_mgL_Obs,y=SFe_mgL_Pred)) +
   geom_point() +
   geom_smooth(method='lm', se=FALSE, color='black') +
   theme_minimal() +
-  labs(x='Lab Measured Soluble Fe (mg/L)', y='PLSR Predicted Soluble Fe (mg/L)') +
-  stat_cor(aes(label = paste(..rr.label.., sep = "~`,`~")), label.y = 0.096, digits = 2) 
+  labs(x='Lab Measured Sol. Fe (mg/L)', y='PLSR Predicted Sol. Fe (mg/L)') +
+  stat_cor(aes(label = paste(..rr.label.., sep = "~`,`~")), label.y = 0.096, digits = 2) +
+  theme(axis.title.x = element_text(size=8),
+        axis.title.y = element_text(color = "black", size=8))
 
 SMn_epi = ggplot(biplot_df_epi, aes(x=SMn_mgL_Obs,y=SMn_mgL_Pred)) +
   geom_point() +
   geom_smooth(method='lm', se=FALSE, color='black') +
   theme_minimal() +
-  labs(x='Lab Measured Soluble Mn (mg/L)', y='PLSR Predicted Soluble Mn (mg/L)') +
-  stat_cor(aes(label = paste(..rr.label.., sep = "~`,`~")), label.y = 0.7, digits = 2) 
+  labs(x='Lab Measured Sol. Mn (mg/L)', y='PLSR Predicted Sol. Mn (mg/L)') +
+  stat_cor(aes(label = paste(..rr.label.., sep = "~`,`~")), label.y = 0.7, digits = 2) +
+  theme(axis.title.x = element_text(size=8),
+        axis.title.y = element_text(color = "black", size=8))
 
 # Write plots to jpeg
 
-patchwork_epi = (TFe_epi | TMn_epi | SFe_epi | SMn_epi)
+patchwork_20 = (TFe_epi | TMn_epi | SFe_epi | SMn_epi) / (TFe | TMn | SFe | SMn)
 
-jpeg('MUX20_biplots_epi_090622.jpeg', width = 12, height = 3.5, units = 'in', res = 600)
+jpeg('MUX20_biplots_111822.jpeg', width = 190, height = 120, units = 'mm', res = 600)
 
-patchwork_epi + plot_annotation(title = "Epilimnion")
-
-dev.off()
-
-patchwork_hypo = (TFe | TMn | SFe | SMn)
-
-jpeg('MUX20_biplots_hypo_090622.jpeg', width = 12, height = 3.5, units = 'in', res = 600)
-
-patchwork_hypo + plot_annotation(title = "Hypolimnion")
+patchwork_20 + plot_annotation(tag_levels = "A") & 
+  theme(plot.tag = element_text(size = 12, hjust = 0, vjust = 0)) 
 
 dev.off()
 
@@ -132,12 +141,12 @@ dev.off()
 ### Oxygen ON Experiment ###
 
 # Read in MUX PLSR predictions
-MUX_preds = read_csv(paste0(getwd(),"/Raw_predictions/MUX21_predictions_boot_051322.csv"))
+MUX_preds = read_csv(paste0(getwd(),"/MagicData/MUX/Figures Files/MUX21_predictions_boot_051322.csv"))
 MUX_preds$DateTime = ymd_hms(MUX_preds$DateTime, tz="America/New_York")
 MUX_preds = MUX_preds %>% select(-c('...1'))
 
 #### Read in FCR WQ data ####
-dataWQ <- read_csv(paste0(getwd(),"/Raw_predictions/MUX21_dataWQ_051322.csv"))
+dataWQ <- read_csv(paste0(getwd(),"/MagicData/MUX/Figures Files/MUX21_dataWQ_051322.csv"))
 dataWQ$DateTime = ymd_hms(dataWQ$DateTime, tz="America/New_York")
 dataWQ = dataWQ %>% select(-c('...1','ID'))
 
@@ -164,29 +173,37 @@ TFe = ggplot(biplot_df_hypo, aes(x=TFe_mgL_Obs,y=TFe_mgL_Pred)) +
   geom_point() +
   geom_smooth(method='lm', se=FALSE, color='black') +
   theme_minimal() +
-  labs(x='Lab Measured Total Fe (mg/L)', y='PLSR Predicted Total Fe (mg/L)') +
-  stat_cor(aes(label = paste(..rr.label.., sep = "~`,`~")), label.y = 7) 
+  labs(x='Lab Measured Tot. Fe (mg/L)', y='PLSR Predicted Tot. Fe (mg/L)') +
+  stat_cor(aes(label = paste(..rr.label.., sep = "~`,`~")), label.y = 7) +
+  theme(axis.title.x = element_text(size=8),
+        axis.title.y = element_text(color = "black", size=8))
 
 TMn = ggplot(biplot_df_hypo, aes(x=TMn_mgL_Obs,y=TMn_mgL_Pred)) +
   geom_point() +
   geom_smooth(method='lm', se=FALSE, color='black') +
   theme_minimal() +
-  labs(x='Lab Measured Total Mn (mg/L)', y='PLSR Predicted Total Mn (mg/L)') +
-  stat_cor(aes(label = paste(..rr.label.., sep = "~`,`~")), label.y = 1) 
+  labs(x='Lab Measured Tot. Mn (mg/L)', y='PLSR Predicted Tot. Mn (mg/L)') +
+  stat_cor(aes(label = paste(..rr.label.., sep = "~`,`~")), label.y = 1) +
+  theme(axis.title.x = element_text(size=8),
+        axis.title.y = element_text(color = "black", size=8))
 
 SFe = ggplot(biplot_df_hypo, aes(x=SFe_mgL_Obs,y=SFe_mgL_Pred)) +
   geom_point() +
   geom_smooth(method='lm', se=FALSE, color='black') +
   theme_minimal() +
-  labs(x='Lab Measured Soluble Fe (mg/L)', y='PLSR Predicted Soluble Fe (mg/L)') +
-  stat_cor(aes(label = paste(..rr.label.., sep = "~`,`~")), label.y = 7.2, digits = 2) 
+  labs(x='Lab Measured Sol. Fe (mg/L)', y='PLSR Predicted Sol. Fe (mg/L)') +
+  stat_cor(aes(label = paste(..rr.label.., sep = "~`,`~")), label.y = 7.2, digits = 2) +
+  theme(axis.title.x = element_text(size=8),
+        axis.title.y = element_text(color = "black", size=8))
 
 SMn = ggplot(biplot_df_hypo, aes(x=SMn_mgL_Obs,y=SMn_mgL_Pred)) +
   geom_point() +
   geom_smooth(method='lm', se=FALSE, color='black') +
   theme_minimal() +
-  labs(x='Lab Measured Soluble Mn (mg/L)', y='PLSR Predicted Soluble Mn (mg/L)') +
-  stat_cor(aes(label = paste(..rr.label.., sep = "~`,`~")), label.y = 0.95, digits = 2) 
+  labs(x='Lab Measured Sol. Mn (mg/L)', y='PLSR Predicted Sol. Mn (mg/L)') +
+  stat_cor(aes(label = paste(..rr.label.., sep = "~`,`~")), label.y = 0.95, digits = 2) +
+  theme(axis.title.x = element_text(size=8),
+        axis.title.y = element_text(color = "black", size=8))
 
 
 # Oxygen On Experiment, Epilimnion Models #
@@ -195,44 +212,48 @@ TFe_epi = ggplot(biplot_df_epi, aes(x=TFe_mgL_Obs,y=TFe_mgL_Pred)) +
   geom_point() +
   geom_smooth(method='lm', se=FALSE, color='black') +
   theme_minimal() +
-  labs(x='Lab Measured Total Fe (mg/L)', y='PLSR Predicted Total Fe (mg/L)') +
-  stat_cor(aes(label = paste(..rr.label.., sep = "~`,`~")), label.y = 0.75) 
+  labs(x='Lab Measured Tot. Fe (mg/L)', y='PLSR Predicted Tot. Fe (mg/L)') +
+  stat_cor(aes(label = paste(..rr.label.., sep = "~`,`~")), label.y = 0.75) +
+  theme(axis.title.x = element_text(size=8),
+        axis.title.y = element_text(color = "black", size=8))
 
 TMn_epi = ggplot(biplot_df_epi, aes(x=TMn_mgL_Obs,y=TMn_mgL_Pred)) +
   geom_point() +
   geom_smooth(method='lm', se=FALSE, color='black') +
   theme_minimal() +
-  labs(x='Lab Measured Total Mn (mg/L)', y='PLSR Predicted Total Mn (mg/L)') +
-  stat_cor(aes(label = paste(..rr.label.., sep = "~`,`~")), label.y = 0.055) 
+  labs(x='Lab Measured Tot. Mn (mg/L)', y='PLSR Predicted Tot. Mn (mg/L)') +
+  stat_cor(aes(label = paste(..rr.label.., sep = "~`,`~")), label.y = 0.055) +
+  theme(axis.title.x = element_text(size=8),
+        axis.title.y = element_text(color = "black", size=8))
 
 SFe_epi = ggplot(biplot_df_epi, aes(x=SFe_mgL_Obs,y=SFe_mgL_Pred)) +
   geom_point() +
   geom_smooth(method='lm', se=FALSE, color='black') +
   theme_minimal() +
-  labs(x='Lab Measured Soluble Fe (mg/L)', y='PLSR Predicted Soluble Fe (mg/L)') +
-  stat_cor(aes(label = paste(..rr.label.., sep = "~`,`~")), label.y = 0.65, digits = 2) 
+  labs(x='Lab Measured Sol. Fe (mg/L)', y='PLSR Predicted Sol. Fe (mg/L)') +
+  stat_cor(aes(label = paste(..rr.label.., sep = "~`,`~")), label.y = 0.65, digits = 2)+
+  theme(axis.title.x = element_text(size=8),
+        axis.title.y = element_text(color = "black", size=8)) 
 
 SMn_epi = ggplot(biplot_df_epi, aes(x=SMn_mgL_Obs,y=SMn_mgL_Pred)) +
   geom_point() +
   geom_smooth(method='lm', se=FALSE, color='black') +
   theme_minimal() +
-  labs(x='Lab Measured Soluble Mn (mg/L)', y='PLSR Predicted Soluble Mn (mg/L)') +
-  stat_cor(aes(label = paste(..rr.label.., sep = "~`,`~")), label.y = 0.0165, digits = 2) 
+  labs(x='Lab Measured Sol. Mn (mg/L)', y='PLSR Predicted Sol. Mn (mg/L)') +
+  stat_cor(aes(label = paste(..rr.label.., sep = "~`,`~")), label.y = 0.0165, digits = 2) +
+  theme(axis.title.x = element_text(size=8),
+        axis.title.y = element_text(color = "black", size=8),
+        axis.text =  element_text(size = 6))
 
 # Write plots to jpeg
 
-patchwork_epi = (TFe_epi | TMn_epi | SFe_epi | SMn_epi)
+patchwork_21 = (TFe_epi | TMn_epi | SFe_epi | SMn_epi) / (TFe | TMn | SFe | SMn)
 
-jpeg('MUX21_biplots_epi_090622.jpeg', width = 12, height = 3.5, units = 'in', res = 600)
+jpeg('MUX21_biplots_111822.jpeg', width = 190, height = 120, units = 'mm', res = 600)
 
-patchwork_epi + plot_annotation(title = "Epilimnion")
-
-dev.off()
-
-patchwork_hypo = (TFe | TMn | SFe | SMn)
-
-jpeg('MUX21_biplots_hypo_090622.jpeg', width = 12, height = 3.5, units = 'in', res = 600)
-
-patchwork_hypo + plot_annotation(title = "Hypolimnion")
+patchwork_21 + plot_annotation(tag_levels = "A") & 
+  theme(plot.tag = element_text(size = 12, hjust = 0, vjust = 0)) 
 
 dev.off()
+
+

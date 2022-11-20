@@ -2,7 +2,7 @@
 #* TITLE:  MUx 2021 Results Figures Script
 #*                     
 #* AUTHORS: Nick Hammond                                         
-#* LAST UPDATED: 15 November 2022
+#* LAST UPDATED: 18 November 2022
 #*                                    
 #* NOTES:  This script utilizes data files from '2b_PLSR_MUX_2021.R', 'thermocline_SchmidtStability_calcs_MUX21.R',
 #*         and the EDI catwalk and met station data packages to produce multi-panel plots of:
@@ -39,7 +39,7 @@ df_name = "FCR_Catwalk_2018_2021.csv"
 #Download EDI catwalk dataset
 inUrl1  <- "https://pasta.lternet.edu/package/data/eml/edi/271/6/23a191c1870a5b18cbc17f2779f719cf"  
 infile1 <- c(paste0(path,df_name,sep=""))
-download.file(inUrl1,infile1,method="curl")
+#download.file(inUrl1,infile1,method="curl")
 #Import data as .csv file
 catwalk = read_csv(paste(path,df_name,sep="")) 
 #Select the variables we want
@@ -142,8 +142,8 @@ colnames(SSS)= c("Date")
 ###### Multi-panel plot #####
 
 # Create variable for BeginTime and EndTime
-Begin_time = as.POSIXct("2021-05-26 00:00:00", tz = "Etc/GMT+4") # 2021-06-04 starts after data gap
-End_time = as.POSIXct("2021-06-21 24:00:00", tz = "Etc/GMT+4")
+Begin_time_21 = as.POSIXct("2021-05-26 00:00:00", tz = "Etc/GMT+4") # 2021-06-04 starts after data gap
+End_time_21 = as.POSIXct("2021-06-21 24:00:00", tz = "Etc/GMT+4")
 
 # MUX Predictions
 
@@ -156,7 +156,7 @@ TFe_plot = ggplot() +
   theme(legend.position="right")+
   geom_vline(data=SSS, aes(xintercept=Date), linetype="dashed", color="black", size=1) +
   scale_x_datetime(date_minor_breaks = "1 day", 
-                   limits = c(Begin_time,End_time),
+                   limits = c(Begin_time_21,End_time_21),
                    labels = date_format("%b-%d")) +
   guides(fill = "none") +
   theme(
@@ -181,7 +181,7 @@ TMn_plot = ggplot() +
   theme(legend.position="right")+
   geom_vline(data=SSS, aes(xintercept=Date), linetype="dashed", color="black", size=1) +
   scale_x_datetime(date_minor_breaks = "1 day", 
-                   limits = c(Begin_time,End_time),
+                   limits = c(Begin_time_21,End_time_21),
                    labels = date_format("%b-%d")) +
   guides(fill= "none")+
   theme(
@@ -198,49 +198,54 @@ TMn_plot = ggplot() +
     panel.grid = element_line(color = "lightgrey", size = 0.5)) 
 
 SFe_plot = ggplot() +
-  geom_path(data=MUX_preds, aes(x=DateTime,y=SFe_mgL, color= as.character(Depth_m)), size=1.5) +
+  geom_path(data=MUX_preds, aes(x=DateTime,y=SFe_mgL, color= as.character(Depth_m)), size=0.8) +
   geom_ribbon(data=MUX_preds, aes(ymin=uncerSFe_min, ymax=uncerSFe_max, x=DateTime, fill = as.character(Depth_m)), alpha = 0.2)+
-  geom_point(data=dataWQ, aes(x=DateTime, y=SFe_mgL, colour= as.character(Depth_m)), size=7) +
+  geom_point(data=dataWQ, aes(x=DateTime, y=SFe_mgL, colour= as.character(Depth_m)), size=1.5) +
   labs(x="Date",y="Soluble Fe (mg/L)", color = "Depth (m)", fill="90% PI") +
   theme_bw() +
   theme(legend.position="right")+
-  geom_vline(data=SSS, aes(xintercept=Date), linetype="dashed", color="black", size=2) +
+  geom_vline(data=SSS, aes(xintercept=Date), linetype="dashed", color="black", size=1) +
   scale_x_datetime(date_minor_breaks = "1 day", 
-                   limits = c(Begin_time,End_time),
+                   limits = c(Begin_time_21,End_time_21),
                    labels = date_format("%b-%d")) +
+  guides(fill = "none") +
   theme(
     axis.text.x = element_text(size= 12),
     axis.text.y.left = element_text(size= 12),
     axis.title.x = element_blank(),
-    axis.title.y = element_text(color = "black", size=14),
+    axis.title.y = element_text(color = "black", size=12),
     legend.text = element_text(size = 8),
     legend.title = element_text(size = 10),
     legend.key = element_rect(size=2),
     legend.box.background = element_rect(),
-    legend.box = "horizontal",
-    panel.grid = element_line(color = "lightgrey", size = 0.5)) 
+    #legend.box = "horizontal",
+    #legend.spacing.x = unit(5,"mm"),
+    panel.grid = element_line(color = "lightgrey", size = 0.5))  
+
 SMn_plot = ggplot() +
-  geom_path(data=MUX_preds, aes(x=DateTime,y=SMn_mgL, color= as.character(Depth_m)), size=1.5) +
+  geom_path(data=MUX_preds, aes(x=DateTime,y=SMn_mgL, color= as.character(Depth_m)), size=0.8) +
   geom_ribbon(data=MUX_preds, aes(ymin=uncerSMn_min, ymax=uncerSMn_max, x=DateTime, fill = as.character(Depth_m)), alpha = 0.2)+
-  geom_point(data=dataWQ, aes(x=DateTime, y=SMn_mgL, colour= as.character(Depth_m)), size=7) +
+  geom_point(data=dataWQ, aes(x=DateTime, y=SMn_mgL, colour= as.character(Depth_m)), size=1.5) +
   labs(x="Date",y="Soluble Mn (mg/L)", color = "Depth (m)", fill="90% PI") +
   theme_bw() +
   theme(legend.position="right")+
-  geom_vline(data=SSS, aes(xintercept=Date), linetype="dashed", color="black", size=2) +
+  geom_vline(data=SSS, aes(xintercept=Date), linetype="dashed", color="black", size=1) +
   scale_x_datetime(date_minor_breaks = "1 day", 
-                   limits = c(Begin_time,End_time),
+                   limits = c(Begin_time_21,End_time_21),
                    labels = date_format("%b-%d")) +
+  guides(fill = "none") +
   theme(
     axis.text.x = element_text(size= 12),
     axis.text.y.left = element_text(size= 12),
     axis.title.x = element_blank(),
-    axis.title.y = element_text(color = "black", size=14),
+    axis.title.y = element_text(color = "black", size=12),
     legend.text = element_text(size = 8),
     legend.title = element_text(size = 10),
     legend.key = element_rect(size=2),
     legend.box.background = element_rect(),
-    legend.box = "horizontal",
-    panel.grid = element_line(color = "lightgrey", size = 0.5)) 
+    #legend.box = "horizontal",
+    #legend.spacing.x = unit(5,"mm"),
+    panel.grid = element_line(color = "lightgrey", size = 0.5))
 
 
 # Thermocline depth & Schmidt stability
@@ -249,7 +254,7 @@ thermocline_plot = ggplot() +
   labs(x="Date", y="Thermocline Depth (m)")+
   #theme_ipsum() +
   #theme(legend.position=c(0.95,0.95))+
-  scale_x_datetime(date_minor_breaks = "1 day", limits = c(Begin_time,End_time),
+  scale_x_datetime(date_minor_breaks = "1 day", limits = c(Begin_time_21,End_time_21),
                    labels = date_format("%Y-%m-%d")) +
   geom_vline(data=SSS, aes(xintercept=Date), linetype="dashed", color="black", size=2) +
   theme(
@@ -268,7 +273,7 @@ schmidt_plot = ggplot() +
   labs(x="Date", y= expression("Schmidt Stability (J/"*"m"^2*")"))+
   theme_bw() +
   #theme(legend.position=c(0.95,0.95))+
-  scale_x_datetime(date_minor_breaks = "1 day", limits = c(Begin_time,End_time),
+  scale_x_datetime(date_minor_breaks = "1 day", limits = c(Begin_time_21,End_time_21),
                    labels = date_format("%b-%d")) +
   geom_vline(data=SSS, aes(xintercept=Date), linetype="dashed", color="black", size=1) +
   theme(
@@ -289,7 +294,7 @@ DO_plot = ggplot() +
   geom_path(data=DO_long, aes(x=DateTime, y=DO_mgL, color = as.character(depth_m)), size=0.8) +
   labs(x="Date",y="DO (mg/L)",color="Depth (m)") +
   scale_x_datetime(date_minor_breaks = "1 day", 
-                   limits = c(Begin_time,End_time),
+                   limits = c(Begin_time_21,End_time_21),
                    labels = date_format("%b-%d")) +
   theme_bw() +
   theme(legend.position="right")+
@@ -332,7 +337,7 @@ fdom_plot = ggplot() +
   ylim(c(18,24)) +
   #theme_ipsum() +
   scale_x_datetime(date_minor_breaks = "1 day", 
-                   limits = c(Begin_time,End_time),
+                   limits = c(Begin_time_21,End_time_21),
                    labels = date_format("%Y-%m-%d")) +
   theme(
     axis.text.x = element_text(size= 3),
@@ -350,7 +355,7 @@ Temp_plot = ggplot() +
   labs(x="Date", y="Temp. (deg C)", color= "Depth (m)")+
   theme_bw() +
   #theme(legend.position=c(0.95,0.95))+
-  scale_x_datetime(date_minor_breaks = "1 day", limits = c(Begin_time,End_time),
+  scale_x_datetime(date_minor_breaks = "1 day", limits = c(Begin_time_21,End_time_21),
                    labels = date_format("%b-%d")) +
   geom_vline(data=SSS, aes(xintercept=Date), linetype="dashed", color="black", size=1) +
   guides(col = guide_legend(ncol = 2)) +
@@ -376,7 +381,7 @@ SW_plot = ggplot() +
   geom_path(data=met_exp, aes(x=DateTime, y=ShortwaveRadiationDown_Average_W_m2), size=1.5) +
   labs(x="Date",y="Shortwave Rad. Down (W/m2)") +
   scale_x_datetime(date_minor_breaks = "1 day", 
-                   limits = c(Begin_time,End_time),
+                   limits = c(Begin_time_21,End_time_21),
                    labels = date_format("%b-%d")) +
   theme_bw() +
   theme(legend.position="right")+
@@ -396,7 +401,7 @@ wind_plot = ggplot() +
   geom_path(data=met_exp, aes(x=DateTime, y=WindSpeed_Average_m_s), size=1.5, color="black") +
   labs(x="Date",y="Avg Wind Speed (m/s)") +
   scale_x_datetime(date_minor_breaks = "1 day", 
-                   limits = c(Begin_time,End_time),
+                   limits = c(Begin_time_21,End_time_21),
                    labels = date_format("%b-%d")) +
   theme_bw() +
   theme(legend.position="right")+
@@ -416,7 +421,7 @@ rain_plot = ggplot() +
   geom_path(data=met_exp, aes(x=DateTime, y=Rain_Total_mm), size=1.5, color="black") +
   labs(x="Date",y="Total Rain (mm)") +
   scale_x_datetime(date_minor_breaks = "1 day", 
-                   limits = c(Begin_time,End_time),
+                   limits = c(Begin_time_21,End_time_21),
                    labels = date_format("%b-%d")) +
   theme_bw() +
   theme(legend.position="right")+
@@ -436,7 +441,7 @@ AirTemp_plot = ggplot() +
   geom_path(data=met_exp, aes(x=DateTime, y=AirTemp_Average_C), size=1.5, color = "black") +
   labs(x="Date", y="Air Temp. (deg C)")+
   scale_x_datetime(date_minor_breaks = "1 day", 
-                   limits = c(Begin_time,End_time),
+                   limits = c(Begin_time_21,End_time_21),
                    labels = date_format("%b-%d")) +
   theme_bw() +
   theme(legend.position="right")+
@@ -467,11 +472,11 @@ dev.off()
 
 
 # Figure SI_MUX21_SFe_SMn_predictions
-jpeg('MUX21_Schmidt_Temp_DO_SFe_SMn_FullDepths_FullTS_101422.jpeg', width = 190, height = 240, units = 'mm', res = 600)
+jpeg('MUX21_Schmidt_Temp_DO_SFe_SMn_FullDepths_FullTS_111822.jpeg', width = 190, height = 240, units = 'mm', res = 600)
 
 schmidt_plot / Temp_plot / DO_plot / SFe_plot / SMn_plot + 
   plot_annotation(tag_levels = "A") & 
-  theme(plot.tag = element_text(size = 42, hjust = 0, vjust = 0))
+  theme(plot.tag = element_text(size = 12, hjust = 0, vjust = 0))
 
 dev.off()
 
@@ -480,7 +485,7 @@ jpeg('MUX21_SW_AirTemp_Wind_Rain_FullDepths_FullTS_101422.jpeg', width = 190, he
 
  SW_plot / AirTemp_plot / wind_plot / rain_plot  + 
   plot_annotation(tag_levels = "A") & 
-  theme(plot.tag = element_text(size = 42, hjust = 0, vjust = 0))
+  theme(plot.tag = element_text(size = 12, hjust = 0, vjust = 0))
 
 dev.off()
 
@@ -509,11 +514,11 @@ MUX_preds = MUX_preds %>% mutate(Fe_ratio = SFe_mgL / TFe_mgL,
   ungroup(Depth_m)
 
 # Split MUX_preds by depth (for plotting)
-MUX_preds_hypo = MUX_preds %>% filter(Depth_m >= 6.2)
-MUX_preds_epi = MUX_preds %>% filter(Depth_m <= 3.8)
+MUX_preds_hypo_21 = MUX_preds %>% filter(Depth_m >= 6.2)
+MUX_preds_epi_21 = MUX_preds %>% filter(Depth_m <= 3.8)
 
-dataWQ_hypo = dataWQ %>% filter(Depth_m >= 6.2)
-dataWQ_epi = dataWQ %>% filter(Depth_m <= 3.8)
+dataWQ_hypo_21 = dataWQ %>% filter(Depth_m >= 6.2)
+dataWQ_epi_21 = dataWQ %>% filter(Depth_m <= 3.8)
 
 
 
@@ -534,7 +539,7 @@ Fe_Mn_ratio_plot = ggplot() +
   geom_vline(data=SSS, aes(xintercept=Date), linetype="dashed", color="black", size=1) +
   #theme_ipsum() +
   scale_x_datetime(date_minor_breaks = "1 day", 
-                   limits = c(Begin_time,End_time),
+                   limits = c(Begin_time_21,End_time_21),
                    labels = date_format("%Y-%m-%d")) +
   scale_colour_manual(values = c("#00C19F","#619CFF","#FF61C3")) +
   facet_wrap(~variable, nrow = 2) +
@@ -571,7 +576,7 @@ Fe_ratio_plot = ggplot() +
   geom_vline(data=SSS, aes(xintercept=Date), linetype="dashed", color="black", size=2) +
   #theme_ipsum() +
   scale_x_datetime(date_minor_breaks = "1 day", 
-                   limits = c(Begin_time,End_time),
+                   limits = c(Begin_time_21,End_time_21),
                    labels = date_format("%Y-%m-%d")) +
   #scale_color_manual(values = c("6.2" = "#00B0F6", "8" = "#E76BF3")) +
   theme(
@@ -595,7 +600,7 @@ Mn_ratio_plot = ggplot() +
   geom_vline(data=SSS, aes(xintercept=Date), linetype="dashed", color="black", size=2) +
   #theme_ipsum() +
   scale_x_datetime(date_minor_breaks = "1 day", 
-                   limits = c(Begin_time,End_time),
+                   limits = c(Begin_time_21,End_time_21),
                    labels = date_format("%Y-%m-%d")) +
   #scale_color_manual(values = c("6.2" = "#00B0F6", "8" = "#E76BF3")) +
   theme(
@@ -619,7 +624,7 @@ TFe_plot_hypo = ggplot() +
   geom_vline(data=SSS, aes(xintercept=Date), linetype="dashed", color="black", size=0.8) +
   #theme_ipsum() +
   scale_x_datetime(date_minor_breaks = "1 day", 
-                   limits = c(Begin_time,End_time),
+                   limits = c(Begin_time_21,End_time_21),
                    labels = date_format("%Y-%m-%d")) +
   theme(
     axis.text.x = element_text(size= 22),
@@ -642,7 +647,7 @@ TMn_plot = ggplot() +
   geom_vline(data=SSS, aes(xintercept=Date), linetype="dashed", color="black", size=0.8) +
   #theme_ipsum() +
   scale_x_datetime(date_minor_breaks = "1 day", 
-                   limits = c(Begin_time,End_time),
+                   limits = c(Begin_time_21,End_time_21),
                    labels = date_format("%Y-%m-%d")) +
   theme(
     axis.text.x = element_text(size= 22),
