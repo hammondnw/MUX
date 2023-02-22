@@ -104,7 +104,7 @@ met_exp = met_exp %>% filter(Reservoir=="FCR" & Site==50) %>%
 #### Read and format MUX PLSR predictions ####
 path = "./MagicData/MUX/Figures Files/"
 MUX_preds = read.csv(paste0(path,"MUX21_predictions_boot_051322.csv"))
-MUX_preds$DateTime = mdy_hm(MUX_preds$DateTime, tz="Etc/GMT+4")
+MUX_preds$DateTime = ymd_hms(MUX_preds$DateTime, tz="Etc/GMT+4")
 # for plotting...
 MUX_preds$Depth_m = as.numeric(MUX_preds$Depth_m)
 
@@ -150,7 +150,7 @@ End_time_21 = as.POSIXct("2021-06-21 24:00:00", tz = "Etc/GMT+4")
 TFe_plot = ggplot() +
   geom_path(data=MUX_preds, aes(x=DateTime,y=TFe_mgL, color= as.character(Depth_m)), size=0.8) +
   geom_ribbon(data=MUX_preds, aes(ymin=uncerTFe_min, ymax=uncerTFe_max, x=DateTime, fill = as.character(Depth_m)), alpha = 0.2)+
-  geom_point(data=dataWQ, aes(x=DateTime, y=TFe_mgL, colour= as.character(Depth_m)), size=1.5) +
+  geom_point(data=dataWQ, aes(x=DateTime, y=TFe_mgL, fill = as.character(Depth_m)), size=1.5, shape = 21, color = "black") +
   labs(x="Date",y="Total Fe (mg/L)", color = "Depth (m)", fill="90% PI") +
   theme_bw() +
   theme(legend.position="right")+
@@ -175,7 +175,7 @@ TFe_plot = ggplot() +
 TMn_plot = ggplot() +
   geom_path(data=MUX_preds, aes(x=DateTime,y=TMn_mgL, color= as.character(Depth_m)), size=0.8) +
   geom_ribbon(data=MUX_preds, aes(ymin=uncerTMn_min, ymax=uncerTMn_max, x=DateTime, fill = as.character(Depth_m)), alpha = 0.2)+
-  geom_point(data=dataWQ, aes(x=DateTime, y=TMn_mgL, colour= as.character(Depth_m)), size=1.5) +
+  geom_point(data=dataWQ, aes(x=DateTime, y=TMn_mgL, fill = as.character(Depth_m)), size=1.5, shape = 21, color = "black") +
   labs(x="Date",y="Total Mn (mg/L)", color = "Depth (m)", fill="90% PI") +
   theme_bw() +
   theme(legend.position="right")+
@@ -200,7 +200,7 @@ TMn_plot = ggplot() +
 SFe_plot = ggplot() +
   geom_path(data=MUX_preds, aes(x=DateTime,y=SFe_mgL, color= as.character(Depth_m)), size=0.8) +
   geom_ribbon(data=MUX_preds, aes(ymin=uncerSFe_min, ymax=uncerSFe_max, x=DateTime, fill = as.character(Depth_m)), alpha = 0.2)+
-  geom_point(data=dataWQ, aes(x=DateTime, y=SFe_mgL, colour= as.character(Depth_m)), size=1.5) +
+  geom_point(data=dataWQ, aes(x=DateTime, y=SFe_mgL, fill = as.character(Depth_m)), size=1.5, shape = 21, color = "black") +
   labs(x="Date",y="Soluble Fe (mg/L)", color = "Depth (m)", fill="90% PI") +
   theme_bw() +
   theme(legend.position="right")+
@@ -225,7 +225,7 @@ SFe_plot = ggplot() +
 SMn_plot = ggplot() +
   geom_path(data=MUX_preds, aes(x=DateTime,y=SMn_mgL, color= as.character(Depth_m)), size=0.8) +
   geom_ribbon(data=MUX_preds, aes(ymin=uncerSMn_min, ymax=uncerSMn_max, x=DateTime, fill = as.character(Depth_m)), alpha = 0.2)+
-  geom_point(data=dataWQ, aes(x=DateTime, y=SMn_mgL, colour= as.character(Depth_m)), size=1.5) +
+  geom_point(data=dataWQ, aes(x=DateTime, y=SMn_mgL, fill = as.character(Depth_m)), size=1.5, shape = 21, color = "black") +
   labs(x="Date",y="Soluble Mn (mg/L)", color = "Depth (m)", fill="90% PI") +
   theme_bw() +
   theme(legend.position="right")+
@@ -462,9 +462,9 @@ AirTemp_plot = ggplot() +
 #### Create png file of multipanel plots ####
 
 # Figure 5
-jpeg('MUX21_Schmidt_Temp_DO_TFe_TMn_FullDepths_FullTS_110922.jpeg', width = 190, height = 240, units = 'mm', res = 600)
+jpeg('MUX21_schmidt_Temp_DO_TFe_TMn_FullDepths_FullTS_022123.jpeg', width = 210, height = 240, units = 'mm', res = 600)
 
-schmidt_plot / Temp_plot / DO_plot / TFe_plot / TMn_plot + 
+ schmidt_plot / Temp_plot / DO_plot / TFe_plot / TMn_plot + 
   plot_annotation(tag_levels = "A") & 
   theme(plot.tag = element_text(size = 12, hjust = 0, vjust = 0))
 
@@ -472,7 +472,7 @@ dev.off()
 
 
 # Figure SI_MUX21_SFe_SMn_predictions
-jpeg('MUX21_Schmidt_Temp_DO_SFe_SMn_FullDepths_FullTS_111822.jpeg', width = 190, height = 240, units = 'mm', res = 600)
+jpeg('MUX21_Schmidt_Temp_DO_SFe_SMn_FullDepths_FullTS_021623.jpeg', width = 190, height = 240, units = 'mm', res = 600)
 
 schmidt_plot / Temp_plot / DO_plot / SFe_plot / SMn_plot + 
   plot_annotation(tag_levels = "A") & 

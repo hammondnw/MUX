@@ -145,7 +145,9 @@ turnover = as.data.frame(ymd_hm(c("2020-11-02 12:00"), tz = "Etc/GMT+4"))
 colnames(turnover)= c("Date")
 
 
-
+rectangle_TMn <- data.frame(xmin = as.POSIXct(c("2020-10-26 10:40:00"),tz = "Etc/GMT+4"),
+                           xmax = as.POSIXct(c("2020-10-28 09:17:00"), tz = "Etc/GMT+4"),
+                           ymin = -Inf, ymax = Inf)
 
 #### Multipanel Plots ####
 
@@ -158,7 +160,7 @@ End_time = as.POSIXct("2020-11-09 18:00:00", tz = "Etc/GMT+4")
 TFe_plot = ggplot() +
   geom_path(data=MUX_preds, aes(x=DateTime,y=TFe_mgL, color= as.character(Depth_m)), size=0.8) +
   geom_ribbon(data=MUX_preds, aes(ymin=uncerTFe_min, ymax=uncerTFe_max, x=DateTime, fill = as.character(Depth_m)), alpha = 0.2)+
-  geom_point(data=dataWQ, aes(x=DateTime, y=TFe_mgL, colour= as.character(Depth_m)), size=1.5) +
+  geom_point(data=dataWQ, aes(x=DateTime, y=TFe_mgL, fill = as.character(Depth_m)), size=1.5, shape = 21, color = "black") +
   labs(x="Date",y="Total Fe (mg/L)", color = "Depth (m)", fill="90% PI") +
   theme_bw() +
     theme(legend.position="right")+
@@ -183,7 +185,7 @@ TFe_plot = ggplot() +
 TMn_plot = ggplot() +
   geom_path(data=MUX_preds, aes(x=DateTime,y=TMn_mgL, color= as.character(Depth_m)), size=0.8) +
   geom_ribbon(data=MUX_preds, aes(ymin=uncerTMn_min, ymax=uncerTMn_max, x=DateTime, fill = as.character(Depth_m)), alpha = 0.2)+
-  geom_point(data=dataWQ, aes(x=DateTime, y=TMn_mgL, colour= as.character(Depth_m)), size=1.5) +
+  geom_point(data=dataWQ, aes(x=DateTime, y=TMn_mgL, fill = as.character(Depth_m)), size=1.5, shape = 21, color = "black") +
   labs(x="Date",y="Total Mn (mg/L)", color = "Depth (m)", fill="90% PI") +
   theme_bw() +
   theme(legend.position="right")+
@@ -203,12 +205,14 @@ TMn_plot = ggplot() +
     legend.box.background = element_rect(),
     #legend.spacing.x = unit(5,"mm"),
     #legend.box = "horizontal",
-    panel.grid = element_line(color = "lightgrey", size = 0.5)) 
+    panel.grid = element_line(color = "lightgrey", size = 0.5)) +
+    geom_rect(data = rectangle_TMn, aes(xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax),
+            fill = "gray", alpha = 0.5)
   
 SFe_plot = ggplot() +
   geom_path(data=MUX_preds, aes(x=DateTime,y=SFe_mgL, color= as.character(Depth_m)), size=0.8) +
   geom_ribbon(data=MUX_preds, aes(ymin=uncerSFe_min, ymax=uncerSFe_max, x=DateTime, fill = as.character(Depth_m)), alpha = 0.2)+
-  geom_point(data=dataWQ, aes(x=DateTime, y=SFe_mgL, colour= as.character(Depth_m)), size=1.5) +
+  geom_point(data=dataWQ, aes(x=DateTime, y=SFe_mgL, fill = as.character(Depth_m)), size=1.5, shape = 21, color = "black") +
   labs(x="Date",y="Soluble Fe (mg/L)", color = "Depth (m)", fill="90% PI") +
   theme_bw() +
   theme(legend.position="right")+
@@ -233,7 +237,7 @@ SFe_plot = ggplot() +
 SMn_plot = ggplot() +
   geom_path(data=MUX_preds, aes(x=DateTime,y=SMn_mgL, color= as.character(Depth_m)), size=0.8) +
   geom_ribbon(data=MUX_preds, aes(ymin=uncerSMn_min, ymax=uncerSMn_max, x=DateTime, fill = as.character(Depth_m)), alpha = 0.2)+
-  geom_point(data=dataWQ, aes(x=DateTime, y=SMn_mgL, colour= as.character(Depth_m)), size=1.5) +
+  geom_point(data=dataWQ, aes(x=DateTime, y=SMn_mgL, fill = as.character(Depth_m)), size=1.5, shape = 21, color = "black") +
   labs(x="Date",y="Soluble Mn (mg/L)", color = "Depth (m)", fill="90% PI") +
   theme_bw() +
   theme(legend.position="right")+
@@ -406,69 +410,75 @@ SW_plot = ggplot() +
     panel.grid = element_line(color = "black", size = 0.5))
 
 wind_plot = ggplot() +
-  geom_path(data=met_exp, aes(x=DateTime, y=WindSpeed_Average_m_s), size=1.5, color="black") +
+  geom_path(data=met_exp, aes(x=DateTime, y=WindSpeed_Average_m_s), size=1, color="black") +
   labs(x="Date",y="Avg Wind Speed (m/s)") +
   scale_x_datetime(date_minor_breaks = "1 day", 
                    limits = c(Begin_time,End_time),
                    labels = date_format("%b-%d")) +
   theme_bw() +
   theme(legend.position="right")+
-  geom_vline(data=turnover, aes(xintercept=Date), linetype="dashed", color="black", size=2) +
+  geom_vline(data=turnover, aes(xintercept=Date), linetype="dashed", color="black", size=1) +
   theme(
-    axis.text.x = element_text(size= 3),
-    axis.text.y.left = element_text(size= 3),
+    axis.text.x = element_text(size= 12),
+    axis.text.y.left = element_text(size= 12),
     axis.title.x = element_blank(),
-    axis.title.y = element_text(color = "black", size=4),
-    legend.text = element_text(size = 2),
-    legend.title = element_text(size = 2),
-    legend.key = element_rect(size=3),
+    axis.title.y = element_text(color = "black", size=12),
+    legend.text = element_text(size = 8),
+    legend.title = element_text(size = 10),
+    #legend.key = element_rect(size=1.8),
     legend.box.background = element_rect(),
-    panel.grid = element_line(color = "black", size = 0.5))
+    #legend.spacing.y = unit(0.001,"lines"),
+    #legend.box = "horizontal",
+    panel.grid = element_line(color = "lightgrey", size = 0.5))
 
 rain_plot = ggplot() +
-  geom_path(data=met_exp, aes(x=DateTime, y=Rain_Total_mm), size=1.5, color="black") +
+  geom_path(data=met_exp, aes(x=DateTime, y=Rain_Total_mm), size=1, color="black") +
   labs(x="Date",y="Total Rain (mm)") +
   scale_x_datetime(date_minor_breaks = "1 day", 
                    limits = c(Begin_time,End_time),
                    labels = date_format("%b-%d")) +
   theme_bw() +
   theme(legend.position="right")+
-  geom_vline(data=turnover, aes(xintercept=Date), linetype="dashed", color="black", size=2) +
+  geom_vline(data=turnover, aes(xintercept=Date), linetype="dashed", color="black", size=1) +
   theme(
-    axis.text.x = element_text(size= 3),
-    axis.text.y.left = element_text(size= 3),
+    axis.text.x = element_text(size= 12),
+    axis.text.y.left = element_text(size= 12),
     axis.title.x = element_blank(),
-    axis.title.y = element_text(color = "black", size=4),
-    legend.text = element_text(size = 2),
-    legend.title = element_text(size = 2),
-    legend.key = element_rect(size=3),
+    axis.title.y = element_text(color = "black", size=12),
+    legend.text = element_text(size = 8),
+    legend.title = element_text(size = 10),
+    #legend.key = element_rect(size=1.8),
     legend.box.background = element_rect(),
-    panel.grid = element_line(color = "black", size = 0.5))
+    #legend.spacing.y = unit(0.001,"lines"),
+    #legend.box = "horizontal",
+    panel.grid = element_line(color = "lightgrey", size = 0.5))
 
 AirTemp_plot = ggplot() +
-  geom_path(data=met_exp, aes(x=DateTime, y=AirTemp_Average_C), size=1.5, color = "black") +
+  geom_path(data=met_exp, aes(x=DateTime, y=AirTemp_Average_C), size=1, color = "black") +
   labs(x="Date", y="Air Temp. (deg C)")+
   scale_x_datetime(date_minor_breaks = "1 day", 
                    limits = c(Begin_time,End_time),
                    labels = date_format("%b-%d")) +
   theme_bw() +
   theme(legend.position="right")+
-  geom_vline(data=turnover, aes(xintercept=Date), linetype="dashed", color="black", size=2) +
+  geom_vline(data=turnover, aes(xintercept=Date), linetype="dashed", color="black", size=1) +
   theme(
-    axis.text.x = element_text(size= 3),
-    axis.text.y.left = element_text(size= 3),
+    axis.text.x = element_text(size= 12),
+    axis.text.y.left = element_text(size= 12),
     axis.title.x = element_blank(),
-    axis.title.y = element_text(color = "black", size=4),
-    legend.text = element_text(size = 2),
-    legend.title = element_text(size = 2),
-    legend.key = element_rect(size=3),
+    axis.title.y = element_text(color = "black", size=12),
+    legend.text = element_text(size = 8),
+    legend.title = element_text(size = 10),
+    #legend.key = element_rect(size=1.8),
     legend.box.background = element_rect(),
-    panel.grid = element_line(color = "black", size = 0.5))
+    #legend.spacing.y = unit(0.001,"lines"),
+    #legend.box = "horizontal",
+    panel.grid = element_line(color = "lightgrey", size = 0.5))
 
 #### Create png file of multipanel plots ####
 
 # Figure 4
-jpeg('MUX20_Schmidt_Temp_DO_TFe_TMn_FullDepths_FullTS_111822.jpeg', width = 190, height = 240, units = 'mm', res = 600)
+jpeg('MUX20_schmidt_Temp_DO_TFe_TMn_FullDepths_FullTS_shaded_022223.jpeg', width = 210, height = 240, units = 'mm', res = 600)
 
 schmidt_plot / Temp_plot / DO_plot / TFe_plot / TMn_plot + 
   plot_annotation(tag_levels = "A") & 
@@ -478,7 +488,7 @@ dev.off()
 
 
 # Figure SI_MUX20_SFe_SMn_predictions
-jpeg('MUX20_Schmidt_Temp_DO_SFe_SMn_FullDepths_FullTS_111822.jpeg', width = 190, height = 240, units = 'mm', res = 600)
+jpeg('MUX20_Schmidt_Temp_DO_SFe_SMn_FullDepths_FullTS_021623.jpeg', width = 190, height = 240, units = 'mm', res = 600)
 
 schmidt_plot / Temp_plot / DO_plot / SFe_plot / SMn_plot + 
   plot_annotation(tag_levels = "A") & 
@@ -487,11 +497,11 @@ schmidt_plot / Temp_plot / DO_plot / SFe_plot / SMn_plot +
 dev.off()
 
 # Figure SI_MUX20_met_data
-jpeg('MUX20_SW_AirTemp_Wind_Rain_FullDepths_FullTS_100322.jpeg', width = 190, height = 240, units = 'mm', res = 600)
+jpeg('MUX20_Temp_AirTemp_Wind_rain_FullDepths_FullTS_120322.jpeg', width = 210, height = 240, units = 'mm', res = 600)
 
- SW_plot / AirTemp_plot / wind_plot / rain_plot  + 
+ Temp_plot / AirTemp_plot / wind_plot / rain_plot  + 
   plot_annotation(tag_levels = "A") & 
-  theme(plot.tag = element_text(size = 42, hjust = 0, vjust = 0))
+  theme(plot.tag = element_text(size = 12, hjust = 0, vjust = 0))
 
 dev.off()
 
@@ -643,7 +653,7 @@ Mn_ratio_plot_21 = ggplot() +
     #strip.text = element_text(size=15)
   )
 
-png('MUX_TFe_TMn_Ratios_hypo_FullTS_111822.png', width = 190, height = 200, units = 'mm', res = 600)
+png('MUX_TFe_TMn_Ratios_hypo_FullTS_022122.png', width = 190, height = 200, units = 'mm', res = 600)
 
 
 Fe_ratio_plot_20 / Mn_ratio_plot_20 / Fe_ratio_plot_21 / Mn_ratio_plot_21 +
